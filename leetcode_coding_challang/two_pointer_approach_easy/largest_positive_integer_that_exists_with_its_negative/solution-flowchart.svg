@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Start node -->
+  <rect x="350" y="30" width="100" height="50" rx="20" ry="20" fill="#4CAF50" />
+  <text x="400" y="60" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Start</text>
+  
+  <!-- Initialize numSet -->
+  <rect x="300" y="110" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="140" font-family="Arial" font-size="14" text-anchor="middle">Create Set from nums array</text>
+  
+  <!-- Initialize maxK -->
+  <rect x="300" y="190" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="220" font-family="Arial" font-size="14" text-anchor="middle">Initialize maxK = -1</text>
+  
+  <!-- Loop start -->
+  <rect x="300" y="270" width="200" height="50" rx="5" ry="5" fill="#FFCC80" />
+  <text x="400" y="300" font-family="Arial" font-size="14" text-anchor="middle">For each num in nums</text>
+  
+  <!-- Condition: Is num positive? -->
+  <polygon points="400,350 475,400 325,400" fill="#FF9800" />
+  <text x="400" y="385" font-family="Arial" font-size="14" text-anchor="middle">Is num > 0?</text>
+  
+  <!-- Condition: Does -num exist? -->
+  <polygon points="400,450 475,500 325,500" fill="#FF9800" />
+  <text x="400" y="485" font-family="Arial" font-size="14" text-anchor="middle">Does numSet has -num?</text>
+  
+  <!-- Update maxK -->
+  <rect x="300" y="530" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="560" font-family="Arial" font-size="14" text-anchor="middle">maxK = max(maxK, num)</text>
+  
+  <!-- Continue loop -->
+  <rect x="550" y="350" width="150" height="50" rx="5" ry="5" fill="#FFCC80" />
+  <text x="625" y="380" font-family="Arial" font-size="14" text-anchor="middle">Continue to next num</text>
+  
+  <!-- End node -->
+  <rect x="550" y="450" width="150" height="50" rx="20" ry="20" fill="#F44336" />
+  <text x="625" y="480" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Return maxK</text>
+  
+  <!-- Arrows -->
+  <line x1="400" y1="80" x2="400" y2="110" stroke="#333" stroke-width="2" />
+  <polygon points="400,110 395,100 405,100" fill="#333" />
+  
+  <line x1="400" y1="160" x2="400" y2="190" stroke="#333" stroke-width="2" />
+  <polygon points="400,190 395,180 405,180" fill="#333" />
+  
+  <line x1="400" y1="240" x2="400" y2="270" stroke="#333" stroke-width="2" />
+  <polygon points="400,270 395,260 405,260" fill="#333" />
+  
+  <line x1="400" y1="320" x2="400" y2="350" stroke="#333" stroke-width="2" />
+  <polygon points="400,350 395,340 405,340" fill="#333" />
+  
+  <!-- Yes branch from first condition -->
+  <line x1="400" y1="400" x2="400" y2="450" stroke="#333" stroke-width="2" />
+  <text x="410" y="425" font-family="Arial" font-size="12">Yes</text>
+  <polygon points="400,450 395,440 405,440" fill="#333" />
+  
+  <!-- No branch from first condition -->
+  <line x1="475" y1="400" x2="550" y2="400" stroke="#333" stroke-width="2" />
+  <text x="500" y="390" font-family="Arial" font-size="12">No</text>
+  <polygon points="550,400 540,395 540,405" fill="#333" />
+  
+  <!-- Yes branch from second condition -->
+  <line x1="400" y1="500" x2="400" y2="530" stroke="#333" stroke-width="2" />
+  <text x="410" y="515" font-family="Arial" font-size="12">Yes</text>
+  <polygon points="400,530 395,520 405,520" fill="#333" />
+  
+  <!-- No branch from second condition -->
+  <line x1="475" y1="500" x2="550" y2="475" stroke="#333" stroke-width="2" />
+  <text x="500" y="475" font-family="Arial" font-size="12">No</text>
+  <polygon points="550,475 540,470 540,480" fill="#333" />
+  
+  <!-- From update maxK back to loop -->
+  <line x1="500" y1="555" x2="625" y2="555" x2="625" y2="400" stroke="#333" stroke-width="2" />
+  <polygon points="625,400 620,410 630,410" fill="#333" />
+  
+  <!-- Loop back to "For each num" -->
+  <path d="M 625 350 C 625 300 550 250 400 250 L 400 270" fill="none" stroke="#333" stroke-width="2" />
+  <polygon points="400,270 395,260 405,260" fill="#333" />
+  
+  <!-- From loop to end -->
+  <line x1="625" y1="400" x2="625" y2="450" stroke="#333" stroke-width="2" />
+  <text x="645" y="425" font-family="Arial" font-size="12">Done</text>
+  <polygon points="625,450 620,440 630,440" fill="#333" />
+  
+  <!-- Legend -->
+  <rect x="50" y="50" width="20" height="20" fill="#4CAF50" />
+  <text x="80" y="65" font-family="Arial" font-size="12">Start/End</text>
+  
+  <rect x="50" y="80" width="20" height="20" fill="#90CAF9" />
+  <text x="80" y="95" font-family="Arial" font-size="12">Process</text>
+  
+  <rect x="50" y="110" width="20" height="20" fill="#FFCC80" />
+  <text x="80" y="125" font-family="Arial" font-size="12">Loop</text>
+  
+  <polygon points="50,140 70,140 60,160" fill="#FF9800" />
+  <text x="80" y="155" font-family="Arial" font-size="12">Decision</text>
+</svg>

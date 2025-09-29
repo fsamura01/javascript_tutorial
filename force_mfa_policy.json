@@ -1,0 +1,53 @@
+{
+  "Statement": [
+    {
+      "Condition": {
+        "BoolIfExists": {
+          "aws:MultiFactorAuthPresent": "false",
+          "aws:ViaAWSService": "false"
+        }
+      },
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:ListUsers",
+        "iam:CreateVirtualMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ListVirtualMFADevices",
+        "iam:ResyncMFADevice",
+        "iam:ChangePassword",
+        "iam:CreateUser",
+        "IAM:CreateLoginProfile",
+        "iam:GetUser",
+        "iam:DeleteVirtualMFADevice",
+        "iam:ListAccountAliases",
+        "iam:ListSSHPublicKeys",
+        "iam:ListAccessKeys",
+        "iam:ListServiceSpecificCredentials",
+        "iam:GetAccountSummary",
+        "iam:GetAccountPasswordPolicy",
+        "sts:GetSessionToken"
+      ],
+      "Resource": "*",
+      "Sid": "BlockMostAccessUnlessSignedInWithMFA"
+    },
+    {
+      "Action": ["iam:CreateVirtualMFADevice"],
+      "Effect": "Allow",
+      "Resource": "arn:aws:iam::*:mfa/*",
+      "Sid": "AllowManageOwnVirtualMFADevice"
+    },
+    {
+      "Action": [
+        "iam:DeactivateMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ResyncMFADevice"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:iam::*:user/${aws:username}",
+      "Sid": "EnforceIAMMFA"
+    }
+  ],
+  "Version": "2012-10-17"
+}

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Start node -->
+  <rect x="350" y="20" width="100" height="50" rx="20" ry="20" fill="#4CAF50" />
+  <text x="400" y="50" font-family="Arial" font-size="16" text-anchor="middle" fill="white">Start</text>
+  
+  <!-- Input node -->
+  <rect x="280" y="100" width="240" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="130" font-family="Arial" font-size="14" text-anchor="middle">Input: nums, indexDifference, valueDifference</text>
+  
+  <!-- Loop i initialization -->
+  <rect x="280" y="180" width="240" height="40" rx="5" ry="5" fill="#FFD54F" />
+  <text x="400" y="205" font-family="Arial" font-size="14" text-anchor="middle">For i = 0 to n-1</text>
+  
+  <!-- Loop j initialization -->
+  <rect x="280" y="250" width="240" height="40" rx="5" ry="5" fill="#FFD54F" />
+  <text x="400" y="275" font-family="Arial" font-size="14" text-anchor="middle">For j = i + indexDifference to n-1</text>
+  
+  <!-- Condition check -->
+  <path d="M300,330 L500,330 L400,390 Z" fill="#FF7043" />
+  <text x="400" y="355" font-family="Arial" font-size="14" text-anchor="middle">|nums[i] - nums[j]| ≥ valueDifference?</text>
+  
+  <!-- Return valid indices -->
+  <rect x="500" y="350" width="150" height="40" rx="5" ry="5" fill="#66BB6A" />
+  <text x="575" y="375" font-family="Arial" font-size="14" text-anchor="middle">Return [i, j]</text>
+  
+  <!-- Continue j loop -->
+  <rect x="280" y="420" width="240" height="30" rx="5" ry="5" fill="#BDBDBD" />
+  <text x="400" y="440" font-family="Arial" font-size="14" text-anchor="middle">Continue j loop</text>
+  
+  <!-- Continue i loop -->
+  <rect x="280" y="480" width="240" height="30" rx="5" ry="5" fill="#BDBDBD" />
+  <text x="400" y="500" font-family="Arial" font-size="14" text-anchor="middle">Continue i loop</text>
+  
+  <!-- Return no valid indices -->
+  <rect x="280" y="540" width="240" height="40" rx="5" ry="5" fill="#EF5350" />
+  <text x="400" y="565" font-family="Arial" font-size="14" text-anchor="middle">Return [-1, -1]</text>
+  
+  <!-- Connectors/Arrows -->
+  <!-- Start to Input -->
+  <line x1="400" y1="70" x2="400" y2="100" stroke="#333" stroke-width="2" />
+  <polygon points="400,100 395,90 405,90" fill="#333" />
+  
+  <!-- Input to Loop i -->
+  <line x1="400" y1="150" x2="400" y2="180" stroke="#333" stroke-width="2" />
+  <polygon points="400,180 395,170 405,170" fill="#333" />
+  
+  <!-- Loop i to Loop j -->
+  <line x1="400" y1="220" x2="400" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="400,250 395,240 405,240" fill="#333" />
+  
+  <!-- Loop j to Condition -->
+  <line x1="400" y1="290" x2="400" y2="330" stroke="#333" stroke-width="2" />
+  <polygon points="400,330 395,320 405,320" fill="#333" />
+  
+  <!-- Condition to Return valid (Yes) -->
+  <line x1="450" y1="360" x2="500" y2="370" stroke="#333" stroke-width="2" />
+  <polygon points="500,370 490,366 490,374" fill="#333" />
+  <text x="470" y="355" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Yes</text>
+  
+  <!-- Condition to Continue j (No) -->
+  <line x1="400" y1="390" x2="400" y2="420" stroke="#333" stroke-width="2" />
+  <polygon points="400,420 395,410 405,410" fill="#333" />
+  <text x="410" y="405" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">No</text>
+  
+  <!-- Continue j to Continue i -->
+  <line x1="400" y1="450" x2="400" y2="480" stroke="#333" stroke-width="2" />
+  <polygon points="400,480 395,470 405,470" fill="#333" />
+  <text x="420" y="465" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">j loop ends</text>
+  
+  <!-- Continue i to Return no valid -->
+  <line x1="400" y1="510" x2="400" y2="540" stroke="#333" stroke-width="2" />
+  <polygon points="400,540 395,530 405,530" fill="#333" />
+  <text x="420" y="525" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">i loop ends</text>
+  
+  <!-- Loop back for j -->
+  <path d="M280,435 Q240,435 240,350 Q240,290 280,290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+  <polygon points="280,290 270,285 270,295" fill="#333" />
+  
+  <!-- Loop back for i -->
+  <path d="M280,495 Q200,495 200,230 Q200,180 280,180" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+  <polygon points="280,180 270,175 270,185" fill="#333" />
+</svg>

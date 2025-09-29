@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700">
+  <!-- Background -->
+  <rect width="800" height="700" fill="#f8f9fa" />
+  
+  <!-- Start node -->
+  <rect x="350" y="30" width="100" height="50" rx="20" ry="20" fill="#4CAF50" />
+  <text x="400" y="60" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Start</text>
+  
+  <!-- Sort Array -->
+  <rect x="300" y="110" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="140" font-family="Arial" font-size="14" text-anchor="middle">Sort nums in ascending order</text>
+  
+  <!-- Initialize pointers -->
+  <rect x="300" y="190" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="215" font-family="Arial" font-size="14" text-anchor="middle">left = 0</text>
+  <text x="400" y="235" font-family="Arial" font-size="14" text-anchor="middle">right = nums.length - 1</text>
+  
+  <!-- Initialize maxK -->
+  <rect x="300" y="270" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="300" font-family="Arial" font-size="14" text-anchor="middle">Initialize maxK = -1</text>
+  
+  <!-- Loop condition -->
+  <polygon points="400,350 475,400 325,400" fill="#FF9800" />
+  <text x="400" y="385" font-family="Arial" font-size="14" text-anchor="middle">left < right?</text>
+  
+  <!-- Calculate sum -->
+  <rect x="300" y="430" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="400" y="460" font-family="Arial" font-size="14" text-anchor="middle">sum = nums[left] + nums[right]</text>
+  
+  <!-- Check sum == 0 -->
+  <polygon points="400,510 475,560 325,560" fill="#FF9800" />
+  <text x="400" y="545" font-family="Arial" font-size="14" text-anchor="middle">sum == 0?</text>
+  
+  <!-- Update maxK -->
+  <rect x="140" y="590" width="200" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="240" y="620" font-family="Arial" font-size="14" text-anchor="middle">maxK = max(maxK, nums[right])</text>
+  
+  <!-- Move both pointers -->
+  <rect x="140" y="500" width="120" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="200" y="525" font-family="Arial" font-size="14" text-anchor="middle">left++</text>
+  <text x="200" y="545" font-family="Arial" font-size="14" text-anchor="middle">right--</text>
+  
+  <!-- Check sum < 0 -->
+  <polygon points="560,510 635,560 485,560" fill="#FF9800" />
+  <text x="560" y="545" font-family="Arial" font-size="14" text-anchor="middle">sum < 0?</text>
+  
+  <!-- Move left pointer -->
+  <rect x="460" y="590" width="120" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="520" y="620" font-family="Arial" font-size="14" text-anchor="middle">left++</text>
+  
+  <!-- Move right pointer -->
+  <rect x="620" y="590" width="120" height="50" rx="5" ry="5" fill="#90CAF9" />
+  <text x="680" y="620" font-family="Arial" font-size="14" text-anchor="middle">right--</text>
+  
+  <!-- End node -->
+  <rect x="550" y="350" width="150" height="50" rx="20" ry="20" fill="#F44336" />
+  <text x="625" y="380" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Return maxK</text>
+  
+  <!-- Arrows -->
+  <line x1="400" y1="80" x2="400" y2="110" stroke="#333" stroke-width="2" />
+  <polygon points="400,110 395,100 405,100" fill="#333" />
+  
+  <line x1="400" y1="160" x2="400" y2="190" stroke="#333" stroke-width="2" />
+  <polygon points="400,190 395,180 405,180" fill="#333" />
+  
+  <line x1="400" y1="240" x2="400" y2="270" stroke="#333" stroke-width="2" />
+  <polygon points="400,270 395,260 405,260" fill="#333" />
+  
+  <line x1="400" y1="320" x2="400" y2="350" stroke="#333" stroke-width="2" />
+  <polygon points="400,350 395,340 405,340" fill="#333" />
+  
+  <!-- True branch from loop condition -->
+  <line x1="400" y1="400" x2="400" y2="430" stroke="#333" stroke-width="2" />
+  <text x="410" y="420" font-family="Arial" font-size="12">Yes</text>
+  <polygon points="400,430 395,420 405,420" fill="#333" />
+  
+  <!-- False branch from loop condition -->
+  <line x1="475" y1="375" x2="550" y2="375" stroke="#333" stroke-width="2" />
+  <text x="500" y="365" font-family="Arial" font-size="12">No</text>
+  <polygon points="550,375 540,370 540,380" fill="#333" />
+  
+  <line x1="400" y1="480" x2="400" y2="510" stroke="#333" stroke-width="2" />
+  <polygon points="400,510 395,500 405,500" fill="#333" />
+  
+  <!-- True branch from sum == 0 -->
+  <line x1="325" y1="560" x2="240" y2="590" stroke="#333" stroke-width="2" />
+  <text x="270" y="570" font-family="Arial" font-size="12">Yes</text>
+  <polygon points="240,590 250,585 245,575" fill="#333" />
+  
+  <!-- Connection from sum == 0 to loop back -->
+  <line x1="200" y1="640" x2="200" y2="525" stroke="#333" stroke-width="2" />
+  <polygon points="200,525 195,535 205,535" fill="#333" />
+  
+  <!-- False branch from sum == 0 -->
+  <line x1="475" y1="535" x2="560" y2="535" stroke="#333" stroke-width="2" />
+  <text x="510" y="525" font-family="Arial" font-size="12">No</text>
+  <polygon points="560,535 550,530 550,540" fill="#333" />
+  
+  <!-- True branch from sum < 0 -->
+  <line x1="520" y1="560" x2="520" y2="590" stroke="#333" stroke-width="2" />
+  <text x="530" y="575" font-family="Arial" font-size="12">Yes</text>
+  <polygon points="520,590 515,580 525,580" fill="#333" />
+  
+  <!-- False branch from sum < 0 -->
+  <line x1="635" y1="535" x2="680" y2="535" x2="680" y2="590" stroke="#333" stroke-width="2" />
+  <text x="650" y="525" font-family="Arial" font-size="12">No</text>
+  <polygon points="680,590 675,580 685,580" fill="#333" />
+  
+  <!-- Loop back to condition -->
+  <path d="M 520 640 C 520 660 680 660 680 640 C 680 450 400 420 400 350" fill="none" stroke="#333" stroke-width="2" />
+  <polygon points="400,350 395,360 405,360" fill="#333" />
+  
+  <!-- Legend -->
+  <rect x="50" y="50" width="20" height="20" fill="#4CAF50" />
+  <text x="80" y="65" font-family="Arial" font-size="12">Start/End</text>
+  
+  <rect x="50" y="80" width="20" height="20" fill="#90CAF9" />
+  <text x="80" y="95" font-family="Arial" font-size="12">Process</text>
+  
+  <polygon points="50,110 70,110 60,130" fill="#FF9800" />
+  <text x="80" y="125" font-family="Arial" font-size="12">Decision</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa" />
+    
+    <!-- Start node -->
+    <ellipse cx="400" cy="50" rx="100" ry="30" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+    <text x="400" y="55" font-family="Arial" font-size="15" text-anchor="middle" fill="#0f5132">Start</text>
+    
+    <!-- Initialize variables -->
+    <rect x="250" y="100" width="300" height="60" rx="10" fill="#fff" stroke="#0d6efd" stroke-width="2" />
+    <text x="400" y="135" font-family="Arial" font-size="15" text-anchor="middle" fill="#002a77">Initialize seen = new Set(), count = 0</text>
+    
+    <!-- Loop start -->
+    <path d="M400,160 L400,180 L550,180 L550,220 L400,220 L400,240" fill="none" stroke="#6c757d" stroke-width="2" />
+    <rect x="300" y="240" width="200" height="60" rx="10" fill="#fff" stroke="#6c757d" stroke-width="2" />
+    <text x="400" y="275" font-family="Arial" font-size="15" text-anchor="middle" fill="#212529">For each num in nums</text>
+    
+    <!-- Decision: check if triplet exists -->
+    <path d="M400,300 L400,340" fill="none" stroke="#6c757d" stroke-width="2" />
+    <polygon points="320,370 480,370 400,450" fill="#fff" stroke="#fd7e14" stroke-width="2" />
+    <text x="400" y="395" font-family="Arial" font-size="14" text-anchor="middle" fill="#7f2d00">seen.has(num-diff) &amp;</text>
+    <text x="400" y="415" font-family="Arial" font-size="14" text-anchor="middle" fill="#7f2d00">seen.has(num-2*diff)?</text>
+    
+    <!-- Increment count -->
+    <path d="M480,370 L550,370 L550,410 L600,410" fill="none" stroke="#6c757d" stroke-width="2" />
+    <text x="530" y="360" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Yes</text>
+    <rect x="600" y="380" width="150" height="60" rx="10" fill="#fff" stroke="#0dcaf0" stroke-width="2" />
+    <text x="675" y="415" font-family="Arial" font-size="15" text-anchor="middle" fill="#055160">count++</text>
+    
+    <!-- Add to set -->
+    <path d="M400,450 L400,480" fill="none" stroke="#6c757d" stroke-width="2" />
+    <text x="370" y="470" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">No</text>
+    <path d="M675,440 L675,480 L400,480" fill="none" stroke="#6c757d" stroke-width="2" />
+    <rect x="300" y="480" width="200" height="60" rx="10" fill="#fff" stroke="#20c997" stroke-width="2" />
+    <text x="400" y="515" font-family="Arial" font-size="15" text-anchor="middle" fill="#0a3622">seen.add(num)</text>
+    
+    <!-- Loop back -->
+    <path d="M300,510 L250,510 L250,220 L300,220" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="265" y="365" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Next num</text>
+    
+    <!-- End node -->
+    <path d="M500,510 L600,510 L600,550 L400,550" fill="none" stroke="#6c757d" stroke-width="2" />
+    <ellipse cx="400" cy="570" rx="100" ry="30" fill="#f8d7da" stroke="#dc3545" stroke-width="2" />
+    <text x="400" y="575" font-family="Arial" font-size="15" text-anchor="middle" fill="#58151c">Return count</text>
+    
+    <!-- Legend -->
+    <rect x="620" y="50" width="160" height="120" rx="5" fill="#fff" stroke="#6c757d" stroke-width="1" />
+    <text x="700" y="70" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold" fill="#212529">Legend</text>
+    
+    <rect x="635" y="85" width="20" height="15" fill="#d1e7dd" stroke="#198754" stroke-width="1" />
+    <text x="665" y="98" font-family="Arial" font-size="12" fill="#212529" text-anchor="start">Start/End</text>
+    
+    <rect x="635" y="110" width="20" height="15" fill="#fff" stroke="#0d6efd" stroke-width="1" />
+    <text x="665" y="123" font-family="Arial" font-size="12" fill="#212529" text-anchor="start">Process</text>
+    
+    <polygon points="635,135 655,135 645,150" fill="#fff" stroke="#fd7e14" stroke-width="1" />
+    <text x="665" y="148" font-family="Arial" font-size="12" fill="#212529" text-anchor="start">Decision</text>
+</svg>

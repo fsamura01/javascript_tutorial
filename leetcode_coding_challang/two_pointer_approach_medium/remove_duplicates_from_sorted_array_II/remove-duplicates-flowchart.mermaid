@@ -1,0 +1,29 @@
+flowchart TD
+    A[Start: Input sorted array nums] --> B{Array length ≤ 2?}
+    
+    B -->|Yes| C[Return array length]
+    B -->|No| D[Initialize writeIndex = 2<br/>Set read pointer i = 2]
+    
+    D --> E[Start loop: i < nums.length]
+    
+    E --> F{nums[i] ≠ nums[writeIndex-2]?}
+    
+    F -->|Yes| G[Valid element found<br/>nums[writeIndex] = nums[i]<br/>writeIndex++]
+    F -->|No| H[Skip element<br/>Would create 3rd duplicate]
+    
+    G --> I[Increment i]
+    H --> I
+    
+    I --> J{i < nums.length?}
+    
+    J -->|Yes| F
+    J -->|No| K[Return writeIndex<br/>Final array length]
+    
+    C --> L[End]
+    K --> L
+    
+    style A fill:#e1f5fe
+    style L fill:#e8f5e8
+    style F fill:#fff3e0
+    style G fill:#e8f5e8
+    style H fill:#ffebee

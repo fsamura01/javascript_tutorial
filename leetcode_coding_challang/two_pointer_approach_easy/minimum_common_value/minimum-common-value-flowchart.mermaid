@@ -1,0 +1,13 @@
+flowchart TD
+    A[Start] --> B[Initialize Pointers i = 0, j = 0]
+    B --> C{Is i < nums1.length AND j < nums2.length?}
+    C -->|Yes| D{Are nums1[i] and nums2[j] equal?}
+    D -->|Yes| E[Return nums1[i] as Common Value]
+    D -->|No| F{Is nums1[i] < nums2[j]?}
+    F -->|Yes| G[Increment i]
+    F -->|No| H[Increment j]
+    G --> C
+    H --> C
+    C -->|No| I[Return -1: No Common Value]
+    E --> J[End]
+    I --> J
