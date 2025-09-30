@@ -3,30 +3,32 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 647. Palindromic Substrings.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 763. Partition Labels.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 647. Palindromic Substrings.
+Instruction: Guide me through solving Leetcode 763. Partition Labels.
 
-Given a string s, return the number of palindromic substrings in it.
+You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part. For example, the string "ababcc" can be partitioned into ["abab", "cc"], but partitions such as ["aba", "bcc"] or ["ab", "ab", "cc"] are invalid.
 
-A string is a palindrome when it reads the same backward as forward.
+Note that the partition is done so that after concatenating all the parts in order, the resultant string should be s.
 
-A substring is a contiguous sequence of characters within the string.
+Return a list of integers representing the size of these parts.
 
 Example 1:
 
-Input: s = "abc"
-Output: 3
-Explanation: Three palindromic strings: "a", "b", "c".
+Input: s = "ababcbacadefegdehijhklij"
+Output: [9,7,8]
+Explanation:
+The partition is "ababcbaca", "defegde", "hijhklij".
+This is a partition so that each letter appears in at most one part.
+A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits s into less parts.
 Example 2:
 
-Input: s = "aaa"
-Output: 6
-Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+Input: s = "eccbbbbdec"
+Output: [10]
 
 Constraints:
 
-1 <= s.length <= 1000
+1 <= s.length <= 500
 s consists of lowercase English letters." LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
