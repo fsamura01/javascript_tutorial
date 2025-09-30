@@ -3,31 +3,36 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 647. Palindromic Substrings.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 826. Most Profit Assigning Work.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 647. Palindromic Substrings.
+Instruction: Guide me through solving Leetcode 826. Most Profit Assigning Work.
 
-Given a string s, return the number of palindromic substrings in it.
+[You have n jobs and m workers. You are given three arrays: difficulty, profit, and worker where:
 
-A string is a palindrome when it reads the same backward as forward.
+difficulty[i] and profit[i] are the difficulty and the profit of the ith job, and
+worker[j] is the ability of jth worker (i.e., the jth worker can only complete a job with difficulty at most worker[j]).
+Every worker can be assigned at most one job, but one job can be completed multiple times.
 
-A substring is a contiguous sequence of characters within the string.
+For example, if three workers attempt the same job that pays $1, then the total profit will be $3. If a worker cannot complete any job, their profit is $0.
+Return the maximum profit we can achieve after assigning the workers to the jobs.
 
 Example 1:
 
-Input: s = "abc"
-Output: 3
-Explanation: Three palindromic strings: "a", "b", "c".
+Input: difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]
+Output: 100
+Explanation: Workers are assigned jobs of difficulty [4,4,6,6] and they get a profit of [20,20,30,30] separately.
 Example 2:
 
-Input: s = "aaa"
-Output: 6
-Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+Input: difficulty = [85,47,57], profit = [24,66,99], worker = [40,25,25]
+Output: 0
 
 Constraints:
 
-1 <= s.length <= 1000
-s consists of lowercase English letters." LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+n == difficulty.length
+n == profit.length
+m == worker.length
+1 <= n, m <= 104
+1 <= difficulty[i], profit[i], worker[i] <= 105] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 

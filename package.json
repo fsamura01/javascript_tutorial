@@ -5,5 +5,11 @@
   "license": "MIT",
   "scripts": {
     "start": "node ."
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.6"
   }
 }
