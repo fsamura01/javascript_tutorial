@@ -1,16 +1,13 @@
-const crypto = require("crypto");
 /**
  * @param {string} s
  * @return {number[]}
  */
-
-const flow_id = crypto.randomBytes(16).toString("hex");
-console.log("🚀 ~ flow_id:", flow_id);
 var partitionLabels = function (s) {
-  const lastIndex = {};
+  // Phase 1: Record last occurrence of each character
+  const lastOccurrence = new Map();
 
   for (let i = 0; i < s.length; i++) {
-    lastIndex[s[i]] = i;
+    lastOccurrence.set(s[i], i);
   }
 
   // Phase 2: Build partitions greedily
@@ -20,7 +17,7 @@ var partitionLabels = function (s) {
 
   for (let i = 0; i < s.length; i++) {
     // Extend partition boundary if needed
-    end = Math.max(end, lastIndex[s[i]]);
+    end = Math.max(end, lastOccurrence.get(s[i]));
 
     // If we've reached the boundary, finalize this partition
     if (i === end) {
@@ -32,5 +29,6 @@ var partitionLabels = function (s) {
   return result;
 };
 
-partitionLabels("ababcbacadefegdehijhklij");
-partitionLabels("eccbbbbdec");
+// Example usage
+console.log(partitionLabels("ababcbacadefegdehijhklij")); // [9, 7, 8]
+console.log(partitionLabels("eccbbbbdec")); // [10]
