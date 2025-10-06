@@ -3,33 +3,32 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 763. Partition Labels.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 777. Swap Adjacent in LR String.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 763. Partition Labels.
+Instruction: Guide me through solving Leetcode 777. Swap Adjacent in LR String.
 
-You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part. For example, the string "ababcc" can be partitioned into ["abab", "cc"], but partitions such as ["aba", "bcc"] or ["ab", "ab", "cc"] are invalid.
-
-Note that the partition is done so that after concatenating all the parts in order, the resultant string should be s.
-
-Return a list of integers representing the size of these parts.
+In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move consists of either replacing one occurrence of "XL" with "LX", or replacing one occurrence of "RX" with "XR". Given the starting string start and the ending string result, return True if and only if there exists a sequence of moves to transform start to result.
 
 Example 1:
 
-Input: s = "ababcbacadefegdehijhklij"
-Output: [9,7,8]
-Explanation:
-The partition is "ababcbaca", "defegde", "hijhklij".
-This is a partition so that each letter appears in at most one part.
-A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits s into less parts.
+Input: start = "RXXLRXRXL", result = "XRLXXRRLX"
+Output: true
+Explanation: We can transform start to result following these steps:
+RXXLRXRXL ->
+XRXLRXRXL ->
+XRLXRXRXL ->
+XRLXXRRXL ->
+XRLXXRRLX
 Example 2:
 
-Input: s = "eccbbbbdec"
-Output: [10]
+Input: start = "X", result = "L"
+Output: false
 
 Constraints:
 
-1 <= s.length <= 500
-s consists of lowercase English letters." LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= start.length <= 104
+start.length == result.length
+Both start and result will only consist of characters in 'L', 'R', and 'X'." LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
