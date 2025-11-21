@@ -1,36 +1,26 @@
-const crypto = require("crypto");
-/**
- * @param {string} s
- * @return {number[]}
- */
+function numSubarrayBoundedMax(nums, left, right) {
+  const n = nums.length;
+  let lastValidIndex = -1;
+  let lastBlockerIndex = -1;
+  let count = 0;
 
-const flow_id = crypto.randomBytes(16).toString("hex");
-console.log("🚀 ~ flow_id:", flow_id);
-var partitionLabels = function (s) {
-  const lastIndex = {};
-
-  for (let i = 0; i < s.length; i++) {
-    lastIndex[s[i]] = i;
-  }
-
-  // Phase 2: Build partitions greedily
-  const result = [];
-  let start = 0; // Start of current partition
-  let end = 0; // Current partition must extend at least to 'end'
-
-  for (let i = 0; i < s.length; i++) {
-    // Extend partition boundary if needed
-    end = Math.max(end, lastIndex[s[i]]);
-
-    // If we've reached the boundary, finalize this partition
-    if (i === end) {
-      result.push(i - start + 1);
-      start = i + 1; // Next partition starts here
+  for (let i = 0; i < n; i++) {
+    if (nums[i] > right) {
+      lastBlockerIndex = i;
+    } else if (nums[i] >= left) {
+      count += i - lastBlockerIndex;
+      lastValidIndex = i;
+    } else {
+      if (lastValidIndex > lastBlockerIndex) {
+        count += lastValidIndex - lastBlockerIndex;
+      }
     }
   }
+  return count;
+}
 
-  return result;
-};
+const nums = [16, 69, 88, 85, 79, 87, 37, 33, 39, 34];
+const left = 55;
+const right = 57;
 
-partitionLabels("ababcbacadefegdehijhklij");
-partitionLabels("eccbbbbdec");
+numSubarrayBoundedMax(nums, left, right);
