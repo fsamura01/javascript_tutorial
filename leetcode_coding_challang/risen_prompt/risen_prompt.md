@@ -3,38 +3,44 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 809. Expressive Words.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 825. Friends Of Appropriate Ages.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 809. Expressive Words.
+Instruction: Guide me through solving Leetcode 825. Friends Of Appropriate Ages.
 
-[Sometimes people repeat letters to represent extra feeling. For example:
+[There are n persons on a social media website. You are given an integer array ages where ages[i] is the age of the ith person.
 
-"hello" -> "heeellooo"
-"hi" -> "hiiii"
-In these strings like "heeellooo", we have groups of adjacent letters that are all the same: "h", "eee", "ll", "ooo".
+A Person x will not send a friend request to a person y (x != y) if any of the following conditions is true:
 
-You are given a string s and an array of query strings words. A query word is stretchy if it can be made to be equal to s by any number of applications of the following extension operation: choose a group consisting of characters c, and add some number of characters c to the group so that the size of the group is three or more.
+age[y] <= 0.5 * age[x] + 7
+age[y] > age[x]
+age[y] > 100 && age[x] < 100
+Otherwise, x will send a friend request to y.
 
-For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", but we cannot get "helloo" since the group "oo" has a size less than three. Also, we could do another extension like "ll" -> "lllll" to get "helllllooo". If s = "helllllooo", then the query word "hello" would be stretchy because of these two extension operations: query = "hello" -> "hellooo" -> "helllllooo" = s.
-Return the number of query strings that are stretchy.
+Note that if x sends a request to y, y will not necessarily send a request to x. Also, a person will not send a friend request to themself.
+
+Return the total number of friend requests made.
 
 Example 1:
 
-Input: s = "heeellooo", words = ["hello", "hi", "helo"]
-Output: 1
-Explanation:
-We can extend "e" and "o" in the word "hello" to get "heeellooo".
-We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.
+Input: ages = [16,16]
+Output: 2
+Explanation: 2 people friend request each other.
 Example 2:
 
-Input: s = "zzzzzyyyyy", words = ["zzyy","zy","zyy"]
+Input: ages = [16,17,18]
+Output: 2
+Explanation: Friend requests are made 17 -> 16, 18 -> 17.
+Example 3:
+
+Input: ages = [20,30,100,110,120]
 Output: 3
+Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
 
 Constraints:
 
-1 <= s.length, words.length <= 100
-1 <= words[i].length <= 100
-s and words[i] consist of lowercase letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+n == ages.length
+1 <= n <= 2 * 104
+1 <= ages[i] <= 120.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
