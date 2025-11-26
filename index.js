@@ -1,56 +1,41 @@
-<<<<<<< HEAD
-const crypto = require("crypto");
 /**
- * @param {string} s
- * @return {number[]}
+ * LeetCode 825: Friends Of Appropriate Ages
+ *
+ * Core Insight: Use counting + prefix sums since ages are bounded [1, 120]
+ * For age A, valid targets are in range (0.5*A + 7, A]
  */
-var countSubstrings = function (s) {
-  if (s.length === 1) return s.length;
-
-  let result = 0;
-
-  for (let i = 0; i < s.length; i++) {
-    result += expandAroundCenter(s, i, i);
-    result += expandAroundCenter(s, i, i + 1);
-=======
-function numSubarrayBoundedMax(nums, left, right) {
-  const n = nums.length;
-  let lastValidIndex = -1;
-  let lastBlockerIndex = -1;
-  let count = 0;
-
-  for (let i = 0; i < n; i++) {
-    if (nums[i] > right) {
-      lastBlockerIndex = i;
-    } else if (nums[i] >= left) {
-      count += i - lastBlockerIndex;
-      lastValidIndex = i;
-    } else {
-      if (lastValidIndex > lastBlockerIndex) {
-        count += lastValidIndex - lastBlockerIndex;
-      }
-    }
->>>>>>> bf6ca1a (Added 809. Expressive Words)
-  }
-  return count;
-}
-
-const nums = [16, 69, 88, 85, 79, 87, 37, 33, 39, 34];
-const left = 55;
-const right = 57;
-
-<<<<<<< HEAD
-function expandAroundCenter(s, left, right) {
-  while (left >= 0 && right < s.length && s[left] === s[right]) {
-    left--;
-    right++;
+var numFriendRequests = function (ages) {
+  // Step 1: Count frequency of each age (ages range from 1 to 120)
+  const count = new Array(121).fill(0);
+  for (const age of ages) {
+    count[age]++;
   }
 
-  return right - left - 1;
-}
+  // Step 2: Build prefix sum array
+  // prefix[i] = total number of people with age <= i
+  const prefix = new Array(121).fill(0);
+  for (let i = 1; i <= 120; i++) {
+    prefix[i] = prefix[i - 1] + count[i];
+  }
 
-countSubstrings("abc");
-countSubstrings("aaa");
-=======
-numSubarrayBoundedMax(nums, left, right);
->>>>>>> bf6ca1a (Added 809. Expressive Words)
+  let totalRecipients = 0;
+
+  for (let age = 15; age < 120; age++) {
+    if (count[age] === 0) continue;
+
+    let low = Math.flow(0.5 * age + 7);
+
+    if (low >= age) continue;
+
+    let validRecipients = prefix[age] - prefix[low];
+
+    totalRecipients = count[age] * (validRecipients - 1);
+  }
+
+  return totalRecipients;
+};
+
+// ----- Test Cases -----
+console.log(numFriendRequests([16, 16])); // Expected: 2
+console.log(numFriendRequests([16, 17, 18])); // Expected: 2
+console.log(numFriendRequests([20, 30, 100, 110, 120])); // Expected: 3
