@@ -8,17 +8,8 @@
   },
   "dependencies": {
     "crypto-js": "^4.2.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
   },
   "devDependencies": {
     "@types/react": "^19.2.6"
-=======
->>>>>>> 92c996e (Added leetcode 763 partition labels)
-=======
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.6"
->>>>>>> bf6ca1a (Added 809. Expressive Words)
   }
 }

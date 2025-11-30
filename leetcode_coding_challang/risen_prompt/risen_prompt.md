@@ -4,6 +4,7 @@ Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrow
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
 **Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 825. Friends Of Appropriate Ages.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 825. Friends Of Appropriate Ages.
 Can you help me learn it by using first-principles thinking?
 Instruction: Guide me through solving Leetcode 825. Friends Of Appropriate Ages.
 
@@ -22,11 +23,9 @@ Return the total number of friend requests made.
 
 Example 1:
 
-Input: s = "heeellooo", words = ["hello", "hi", "helo"]
-Output: 1
-Explanation:
-We can extend "e" and "o" in the word "hello" to get "heeellooo".
-We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.
+Input: s = "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
 Example 2:
 
 Input: ages = [16,17,18]
@@ -40,9 +39,8 @@ Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
 
 Constraints:
 
-1 <= s.length, words.length <= 100
-1 <= words[i].length <= 100
-s and words[i] consist of lowercase letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= s.length <= 1000
+s consists of lowercase English letters." LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
