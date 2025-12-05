@@ -1076,3 +1076,24 @@ Result:        L  L  .  R  R  .  L  L  R  R  L  L  .  .
 4. **Position 2**: Between two L's with no R nearby, stays upright
 
 Does this detailed walkthrough help you see how the algorithm processes each position and makes decisions based on which force arrives first (smaller distance)?
+
+```bash
+feat: Add comprehensive tutorial for LeetCode 838 Push Dominoes
+
+Implement two-pass distance calculation solution with detailed explanations:
+- Calculate rightward forces via left-to-right scan
+- Calculate leftward forces via right-to-left scan
+- Determine final state by comparing force distances at each position
+
+Includes:
+- First-principles breakdown of domino force propagation
+- Complete algorithm walkthrough with "RR.L" and ".L.R...LR..L.." examples
+- JavaScript and Java implementations with inline comments
+- Time complexity: O(n), Space complexity: O(n)
+- Mermaid flowchart visualizing the three-pass algorithm
+- Pattern identification: two-pass scanning for bidirectional information flow
+- Practice recommendations: similar LeetCode problems (42, 238, 821, 135)
+
+Key insight: Distance from force source encodes arrival time, enabling
+efficient O(n) solution instead of O(n²) second-by-second simulation.
+```
