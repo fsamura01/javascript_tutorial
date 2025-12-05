@@ -1,41 +1,67 @@
 /**
- * LeetCode 825: Friends Of Appropriate Ages
- *
- * Core Insight: Use counting + prefix sums since ages are bounded [1, 120]
- * For age A, valid targets are in range (0.5*A + 7, A]
+ * @param {string} dominoes
+ * @return {string}
  */
-var numFriendRequests = function (ages) {
-  // Step 1: Count frequency of each age (ages range from 1 to 120)
-  const count = new Array(121).fill(0);
-  for (const age of ages) {
-    count[age]++;
+var pushDominoes = function (dominoes) {
+  const n = dominoes.length;
+  console.log("🚀 ~ pushDominoes ~ n:", n);
+
+  const rightForce = new Array(n).fill(Infinity);
+
+  const leftForce = new Array(n).fill(Infinity);
+
+  let rightDistance = Infinity;
+
+  for (let i = 0; i < dominoes.length; i++) {
+    if (dominoes[i] === "R") {
+      rightDistance = 0;
+    } else if (dominoes[i] === "L") {
+      rightDistance = Infinity;
+    } else {
+      if (rightDistance !== Infinity) {
+        rightDistance++;
+      }
+    }
+
+    rightForce[i] = rightDistance;
   }
 
-  // Step 2: Build prefix sum array
-  // prefix[i] = total number of people with age <= i
-  const prefix = new Array(121).fill(0);
-  for (let i = 1; i <= 120; i++) {
-    prefix[i] = prefix[i - 1] + count[i];
+  let lefttDistance = Infinity;
+
+  for (let i = n - 1; i >= 0; i--) {
+    if (dominoes[i] === "R") {
+      lefttDistance = Infinity;
+    } else if (dominoes[i] === "L") {
+      lefttDistance = 0;
+    } else {
+      if (lefttDistance !== Infinity) {
+        lefttDistance++;
+      }
+    }
+
+    leftForce[i] = lefttDistance;
   }
 
-  let totalRecipients = 0;
+  const result = [];
 
-  for (let age = 15; age < 120; age++) {
-    if (count[age] === 0) continue;
+  for (let i = 0; i < dominoes.length; i++) {
+    const rightwardForce = rightForce[i];
+    const lefttwardForce = leftForce[i];
 
-    let low = Math.flow(0.5 * age + 7);
-
-    if (low >= age) continue;
-
-    let validRecipients = prefix[age] - prefix[low];
-
-    totalRecipients = count[age] * (validRecipients - 1);
+    if (rightwardForce < lefttwardForce) {
+      result.push("R");
+    } else if (lefttwardForce < rightwardForce) {
+      result.push("L");
+    } else {
+      result.push(".");
+    }
   }
 
-  return totalRecipients;
+  return result.join("");
 };
 
-// ----- Test Cases -----
-console.log(numFriendRequests([16, 16])); // Expected: 2
-console.log(numFriendRequests([16, 17, 18])); // Expected: 2
-console.log(numFriendRequests([20, 30, 100, 110, 120])); // Expected: 3
+// Test cases
+console.log(pushDominoes("RR.L")); // Expected: "RR.L"
+console.log(pushDominoes(".L.R...LR..L..")); // Expected: "LL.RR.LLRRLL.."
+console.log(pushDominoes("..R..")); // Expected: "..RRR"
+console.log(pushDominoes("..L..")); // Expected: "LLL.."
