@@ -3,41 +3,39 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 838. Push Dominoes.
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 825. Friends Of Appropriate Ages.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 845. Longest Mountain in Array.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 845. Longest Mountain in Array.
 Can you help me learn it by using first-principles thinking?
 Instruction: Guide me through solving Leetcode838. Push Dominoes.
 
-[There are n dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.
+[You may recall that an array arr is a mountain array if and only if:
 
-After each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standing on the right.
-
-When a vertical domino has dominoes falling on it from both sides, it stays still due to the balance of the forces.
-
-For the purposes of this question, we will consider that a falling domino expends no additional force to a falling or already fallen domino.
-
-You are given a string dominoes representing the initial state where:
-
-dominoes[i] = 'L', if the ith domino has been pushed to the left,
-dominoes[i] = 'R', if the ith domino has been pushed to the right, and
-dominoes[i] = '.', if the ith domino has not been pushed.
-Return a string representing the final state.
+arr.length >= 3
+There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+Given an integer array arr, return the length of the longest subarray, which is a mountain. Return 0 if there is no mountain subarray.
 
 Example 1:
 
-Input: dominoes = "RR.L"
-Output: "RR.L"
-Explanation: The first domino expends no additional force on the second domino.
+Input: arr = [2,1,4,7,3,2,5]
+Output: 5
+Explanation: The largest mountain is [1,4,7,3,2] which has length 5.
 Example 2:
 
-Input: dominoes = ".L.R...LR..L.."
-Output: "LL.RR.LLRRLL.."
+Input: arr = [2,2,2]
+Output: 0
+Explanation: There is no mountain.
 
 Constraints:
 
-n == dominoes.length
-1 <= n <= 105
-dominoes[i] is either 'L', 'R', or '.'.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= arr.length <= 104
+0 <= arr[i] <= 104
+
+Follow up:
+
+Can you solve it using only one pass?
+Can you solve it in O(1) space?] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
