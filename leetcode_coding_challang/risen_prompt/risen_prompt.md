@@ -3,39 +3,29 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 845. Longest Mountain in Array.
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 845. Longest Mountain in Array.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 870. Advantage Shuffle.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 870. Advantage Shuffle.
 Can you help me learn it by using first-principles thinking?
 Instruction: Guide me through solving Leetcode838. Push Dominoes.
 
-[You may recall that an array arr is a mountain array if and only if:
+[You are given two integer arrays nums1 and nums2 both of the same length. The advantage of nums1 with respect to nums2 is the number of indices i for which nums1[i] > nums2[i].
 
-arr.length >= 3
-There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:
-arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
-arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
-Given an integer array arr, return the length of the longest subarray, which is a mountain. Return 0 if there is no mountain subarray.
+Return any permutation of nums1 that maximizes its advantage with respect to nums2.
 
 Example 1:
 
-Input: arr = [2,1,4,7,3,2,5]
-Output: 5
-Explanation: The largest mountain is [1,4,7,3,2] which has length 5.
+Input: nums1 = [2,7,11,15], nums2 = [1,10,4,11]
+Output: [2,11,7,15]
 Example 2:
 
-Input: arr = [2,2,2]
-Output: 0
-Explanation: There is no mountain.
+Input: nums1 = [12,24,8,32], nums2 = [13,25,32,11]
+Output: [24,32,8,12]
 
 Constraints:
 
-1 <= arr.length <= 104
-0 <= arr[i] <= 104
-
-Follow up:
-
-Can you solve it using only one pass?
-Can you solve it in O(1) space?] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= nums1.length <= 105
+nums2.length == nums1.length
+0 <= nums1[i], nums2[i] <= 109] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
