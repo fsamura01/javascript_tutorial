@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency Picking Explained</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .scenario {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 12px;
+            border: 3px solid #e0e0e0;
+        }
+        .scenario.invalid {
+            background: #ffebee;
+            border-color: #ef5350;
+        }
+        .scenario.valid {
+            background: #e8f5e9;
+            border-color: #66bb6a;
+        }
+        .scenario-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-icon {
+            font-size: 32px;
+        }
+        .array-display {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .array-slot {
+            position: relative;
+        }
+        .index {
+            text-align: center;
+            font-size: 12px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 5px;
+            background: #ffebee;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .value {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .value-1 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .value-2 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .freq-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+        }
+        .freq-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .attempt {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+        .attempt-title {
+            font-weight: bold;
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+        .triplet-pattern {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .triplet-slot {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .slot-needed {
+            border: 3px dashed #666;
+            background: #f0f0f0;
+            color: #666;
+        }
+        .explanation {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .problem-box {
+            background: #ffebee;
+            border: 2px solid #ef5350;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .success-box {
+            background: #e8f5e9;
+            border: 2px solid #66bb6a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .thinking {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-item {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .comparison-item.no {
+            background: #ffebee;
+            border: 2px solid #ef5350;
+        }
+        .comparison-item.yes {
+            background: #e8f5e9;
+            border: 2px solid #66bb6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Why We Need freq[2] ≥ 2 to Pick Two 2's</h1>
+
+        <!-- SCENARIO 1: INVALID -->
+        <div class="scenario invalid">
+            <div class="scenario-title">
+                <span class="status-icon">❌</span>
+                Scenario 1: freq[2] = 1 (CANNOT form triplet)
+            </div>
+
+            <div class="array-display">
+                <div class="array-slot">
+                    <div class="index">i = 0</div>
+                    <div class="value value-1">1</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 1</div>
+                    <div class="value value-1">1</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 2</div>
+                    <div class="value value-2">2</div>
+                </div>
+            </div>
+
+            <div class="freq-info">
+                <div class="freq-row">
+                    <div style="color: #f5576c;">freq[1] = 2 (two 1's available)</div>
+                    <div style="color: #00f2fe;">freq[2] = 1 (only ONE 2 available) ⚠️</div>
+                </div>
+            </div>
+
+            <div class="attempt">
+                <div class="attempt-title">🎯 Trying to form pattern (1, 2, 2):</div>
+                <div class="triplet-pattern">
+                    <div class="triplet-slot value-1">1</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot value-2">2</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot slot-needed">2?</div>
+                </div>
+            </div>
+
+            <div class="thinking">
+                💭 <strong>Thinking Process:</strong><br>
+                • I need THREE positions in my triplet: (i, j, k)<br>
+                • Position i: I'll use a 1 from index 0 or 1 ✓<br>
+                • Position j: I'll use the 2 from index 2 ✓<br>
+                • Position k: I need another 2... but there are no more 2's! ❌
+            </div>
+
+            <div class="problem-box">
+                <strong>❌ THE PROBLEM:</strong><br><br>
+                The array only contains ONE "2" at position 2.<br>
+                I cannot use the same array position twice!<br>
+                <br>
+                To form (1, 2, 2), I need:<br>
+                • A "2" at position j<br>
+                • A DIFFERENT "2" at position k<br>
+                <br>
+                <strong>But there's only one "2" in the entire array!</strong><br>
+                I cannot create two positions with "2" from just one "2".
+            </div>
+        </div>
+
+        <!-- SCENARIO 2: VALID -->
+        <div class="scenario valid">
+            <div class="scenario-title">
+                <span class="status-icon">✅</span>
+                Scenario 2: freq[2] = 4 (CAN form triplet)
+            </div>
+
+            <div class="array-display">
+                <div class="array-slot">
+                    <div class="index">i = 0</div>
+                    <div class="value value-1">1</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 1</div>
+                    <div class="value value-1">1</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 2</div>
+                    <div class="value value-2">2</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 3</div>
+                    <div class="value value-2">2</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 4</div>
+                    <div class="value value-2">2</div>
+                </div>
+                <div class="array-slot">
+                    <div class="index">i = 5</div>
+                    <div class="value value-2">2</div>
+                </div>
+            </div>
+
+            <div class="freq-info">
+                <div class="freq-row">
+                    <div style="color: #f5576c;">freq[1] = 2 (two 1's available)</div>
+                    <div style="color: #00f2fe;">freq[2] = 4 (FOUR 2's available) ✓</div>
+                </div>
+            </div>
+
+            <div class="attempt">
+                <div class="attempt-title">🎯 Forming pattern (1, 2, 2) - Example 1:</div>
+                <div class="triplet-pattern">
+                    <div class="triplet-slot value-1">1</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot value-2">2</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot value-2">2</div>
+                </div>
+                <div style="text-align: center; color: #666; margin-top: 10px;">
+                    Indices: (0, 2, 3) → Pick 1 from position 0, 2's from positions 2 and 3
+                </div>
+            </div>
+
+            <div class="attempt">
+                <div class="attempt-title">🎯 Forming pattern (1, 2, 2) - Example 2:</div>
+                <div class="triplet-pattern">
+                    <div class="triplet-slot value-1">1</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot value-2">2</div>
+                    <span style="font-size: 20px;">+</span>
+                    <div class="triplet-slot value-2">2</div>
+                </div>
+                <div style="text-align: center; color: #666; margin-top: 10px;">
+                    Indices: (1, 3, 5) → Pick 1 from position 1, 2's from positions 3 and 5
+                </div>
+            </div>
+
+            <div class="thinking">
+                💭 <strong>Thinking Process:</strong><br>
+                • I need THREE positions in my triplet: (i, j, k)<br>
+                • Position i: I can use a 1 from index 0 or 1 ✓<br>
+                • Position j: I can use a 2 from indices {2, 3, 4, 5} ✓<br>
+                • Position k: I can use ANOTHER 2 from the remaining indices ✓<br>
+                <br>
+                Since I have FOUR 2's, I can pick any TWO of them!
+            </div>
+
+            <div class="success-box">
+                <strong>✅ SUCCESS:</strong><br><br>
+                The array contains FOUR "2"s at positions 2, 3, 4, 5.<br>
+                I can pick TWO different positions with "2"s!<br>
+                <br>
+                Ways to pick 2 from 4: <strong>C(4, 2) = 6 ways</strong><br>
+                • Positions (2, 3)<br>
+                • Positions (2, 4)<br>
+                • Positions (2, 5)<br>
+                • Positions (3, 4)<br>
+                • Positions (3, 5)<br>
+                • Positions (4, 5)
+            </div>
+        </div>
+
+        <!-- COMPARISON -->
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9ff; border-radius: 12px;">
+            <h2 style="text-align: center; color: #667eea;">📊 Direct Comparison</h2>
+            <div class="comparison">
+                <div class="comparison-item no">
+                    <h3>❌ freq[2] = 1</h3>
+                    <p style="font-size: 18px; margin: 20px 0;">
+                        Can I pick TWO 2's?<br>
+                        <strong style="font-size: 32px;">NO</strong>
+                    </p>
+                    <p>Only ONE "2" exists in the array.<br>
+                    Cannot fill two different positions with "2".</p>
+                </div>
+                <div class="comparison-item yes">
+                    <h3>✅ freq[2] = 4</h3>
+                    <p style="font-size: 18px; margin: 20px 0;">
+                        Can I pick TWO 2's?<br>
+                        <strong style="font-size: 32px;">YES</strong>
+                    </p>
+                    <p>FOUR "2"s exist in the array.<br>
+                    Can fill two positions by picking<br>
+                    any 2 of the 4 available.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANALOGY -->
+        <div style="margin-top: 30px; padding: 20px; background: #e1f5fe; border-radius: 12px; border-left: 4px solid #03a9f4;">
+            <h3 style="color: #0277bd;">🎭 Real-World Analogy:</h3>
+            <p style="font-size: 16px; line-height: 1.6;">
+                Imagine you're forming a 3-person team for a game:<br>
+                <br>
+                <strong>Scenario 1:</strong> You have 2 players named "Alex" and 1 player named "Jordan"<br>
+                Can you form a team with 1 Alex and 2 Jordans? <strong>NO!</strong> You only have one Jordan.<br>
+                <br>
+                <strong>Scenario 2:</strong> You have 2 players named "Alex" and 4 players named "Jordan"<br>
+                Can you form a team with 1 Alex and 2 Jordans? <strong>YES!</strong> You can pick any 2 of the 4 Jordans.
+            </p>
+        </div>
+
+        <!-- KEY TAKEAWAY -->
+        <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; text-align: center;">
+            <h2 style="margin-top: 0;">🎯 Key Takeaway</h2>
+            <p style="font-size: 18px; line-height: 1.8;">
+                <strong>freq[value]</strong> tells us how many times a value appears in the array.<br>
+                <br>
+                If we need to use a value <strong>N times</strong> in our triplet,<br>
+                we must have <strong>at least N occurrences</strong> of that value in the array.<br>
+                <br>
+                For pattern (1, 2, 2):<br>
+                • Need 1 occurrence of "1" → require freq[1] ≥ 1<br>
+                • Need 2 occurrences of "2" → require freq[2] ≥ 2
+            </p>
+        </div>
+    </div>
+</body>
+</html>

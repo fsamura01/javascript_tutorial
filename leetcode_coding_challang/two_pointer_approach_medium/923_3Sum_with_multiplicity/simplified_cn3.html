@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C(n,3) Simplified</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+        .formula-giant {
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0;
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .three-parts {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .part {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .part-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .part-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .divider {
+            font-size: 64px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .example-box {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .example-box h3 {
+            margin-top: 0;
+            color: #f57c00;
+        }
+        .balls-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        .ball {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .step-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .step-header {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .calculation {
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .highlight {
+            background: #e8f5e9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .answer-box {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+        }
+        .simple-rule {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 20px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .comparison-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .comparison-item h4 {
+            color: #667eea;
+            margin: 0 0 10px 0;
+        }
+        .comparison-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 C(n, 3) Made Simple!</h1>
+
+        <div class="formula-giant">
+            n × (n-1) × (n-2) / 6
+        </div>
+
+        <!-- WHAT IT MEANS -->
+        <div class="section">
+            <h2>🤔 What Does It Mean?</h2>
+            <div class="example-box">
+                <h3>In Plain English:</h3>
+                <p style="font-size: 20px; margin: 15px 0;">
+                    <strong>"How many different groups of 3 can I make from n items?"</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- THE THREE PARTS -->
+        <div class="section">
+            <h2>🧩 Breaking It Down</h2>
+            
+            <div class="three-parts">
+                <div class="part">
+                    <div class="part-number">n × (n-1) × (n-2)</div>
+                    <div class="part-label">Pick 3 items<br>(with order)</div>
+                </div>
+                <div class="divider">÷</div>
+                <div class="part">
+                    <div class="part-number">6</div>
+                    <div class="part-label">Remove<br>duplicates</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE WITH BALLS -->
+        <div class="section">
+            <h2>🎨 Concrete Example: 4 Balls</h2>
+            
+            <div class="balls-container">
+                <div class="ball">A</div>
+                <div class="ball">B</div>
+                <div class="ball">C</div>
+                <div class="ball">D</div>
+            </div>
+
+            <p style="text-align: center; font-size: 18px; margin: 20px 0;">
+                <strong>Question: How many ways to pick 3 balls?</strong>
+            </p>
+
+            <!-- STEP 1 -->
+            <div class="step-box">
+                <div class="step-header">Step 1: Pick with Order</div>
+                <p style="font-size: 16px;">Think of picking one at a time:</p>
+                <div class="calculation">
+                    First pick: <span class="highlight">4 choices</span><br>
+                    Second pick: <span class="highlight">3 choices</span> (one is gone)<br>
+                    Third pick: <span class="highlight">2 choices</span> (two are gone)
+                </div>
+                <div class="calculation">
+                    4 × 3 × 2 = 24
+                </div>
+                <p style="text-align: center; margin-top: 15px;">
+                    <strong>24 ways if order matters!</strong>
+                </p>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-box">
+                <div class="step-header">Step 2: But Order DOESN'T Matter!</div>
+                <p style="font-size: 16px;">The group {A, B, C} is the same as:</p>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    {A, B, C} = {A, C, B} = {B, A, C} = {B, C, A} = {C, A, B} = {C, B, A}
+                </div>
+                <p style="text-align: center; font-size: 18px;">
+                    That's <strong style="color: #f44336;">6 duplicates</strong> for each group!
+                </p>
+                <div class="calculation">
+                    Why 6? Because 3 items can be arranged in:<br>
+                    3 × 2 × 1 = <span class="highlight">6 ways</span>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step-box">
+                <div class="step-header">Step 3: Remove Duplicates</div>
+                <div class="calculation">
+                    24 ÷ 6 = 4
+                </div>
+            </div>
+
+            <div class="answer-box">
+                Answer: 4 unique groups! ✓
+            </div>
+
+            <!-- SHOW THE 4 GROUPS -->
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="text-align: center; color: #2e7d32; margin-top: 0;">The 4 Unique Groups:</h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div style="text-align: center; padding: 15px; background: white; border-radius: 8px; font-size: 20px; font-weight: bold;">
+                        {A, B, C}
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: white; border-radius: 8px; font-size: 20px; font-weight: bold;">
+                        {A, B, D}
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: white; border-radius: 8px; font-size: 20px; font-weight: bold;">
+                        {A, C, D}
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: white; border-radius: 8px; font-size: 20px; font-weight: bold;">
+                        {B, C, D}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIMPLE RULE -->
+        <div class="simple-rule">
+            <div style="font-size: 28px; margin-bottom: 15px;">💡 Simple Rule</div>
+            <div style="font-size: 20px;">
+                <strong>Multiply</strong> how many choices at each step<br>
+                <strong>Then divide by 6</strong> to remove duplicates
+            </div>
+        </div>
+
+        <!-- MORE EXAMPLES -->
+        <div class="section">
+            <h2>📊 Quick Reference</h2>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4>n = 3</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">3×2×1÷6</div>
+                    <div class="comparison-value">1</div>
+                </div>
+                <div class="comparison-item">
+                    <h4>n = 4</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">4×3×2÷6</div>
+                    <div class="comparison-value">4</div>
+                </div>
+                <div class="comparison-item">
+                    <h4>n = 5</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">5×4×3÷6</div>
+                    <div class="comparison-value">10</div>
+                </div>
+                <div class="comparison-item">
+                    <h4>n = 6</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">6×5×4÷6</div>
+                    <div class="comparison-value">20</div>
+                </div>
+                <div class="comparison-item">
+                    <h4>n = 7</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">7×6×5÷6</div>
+                    <div class="comparison-value">35</div>
+                </div>
+                <div class="comparison-item">
+                    <h4>n = 10</h4>
+                    <div class="calculation" style="font-size: 16px; padding: 10px;">10×9×8÷6</div>
+                    <div class="comparison-value">120</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REMEMBER -->
+        <div style="background: #e3f2fd; border-left: 6px solid #2196f3; padding: 25px; border-radius: 8px; margin: 30px 0;">
+            <h3 style="color: #1565c0; margin-top: 0;">🎯 Remember:</h3>
+            <ul style="font-size: 18px; line-height: 2;">
+                <li><strong>n</strong> = how many items you have</li>
+                <li><strong>3</strong> = how many you're picking</li>
+                <li><strong>÷ 6</strong> = because 3 items have 6 arrangements (3! = 6)</li>
+            </ul>
+        </div>
+
+        <!-- FINAL SUMMARY -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 12px; text-align: center;">
+            <h2 style="margin-top: 0; font-size: 32px;">The Formula in Words</h2>
+            <p style="font-size: 22px; line-height: 1.8; margin: 20px 0;">
+                Take the first 3 numbers counting down from n,<br>
+                multiply them together,<br>
+                then divide by 6
+            </p>
+            <div style="font-size: 28px; font-family: 'Courier New', monospace; background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin-top: 20px;">
+                n × (n-1) × (n-2) / 6
+            </div>
+        </div>
+    </div>
+</body>
+</html>

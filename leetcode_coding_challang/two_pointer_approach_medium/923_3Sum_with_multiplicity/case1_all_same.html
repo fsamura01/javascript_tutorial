@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 1: All Three Same</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .example-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+        }
+        .array-visual {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .array-item {
+            text-align: center;
+        }
+        .index {
+            font-size: 12px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 5px;
+            background: #ffebee;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .value-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .label {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .formula-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .formula-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .formula-box {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .step {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .combinations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .combination-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        .combination-card h4 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        .triplet-visual {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .mini-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .indices {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .insight-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .math-derivation {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .math-step {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📘 Case 1: All Three Same (x, x, x)</h1>
+
+        <!-- EXAMPLE SETUP -->
+        <div class="section">
+            <h2>🎯 Example Setup</h2>
+            <div class="example-box">
+                <h3 style="color: #667eea; margin-top: 0;">Pattern: (2, 2, 2) with target = 6</h3>
+                <p style="font-size: 16px;">
+                    Let's say we have an array with four 2's:<br>
+                    <code>arr = [2, 2, 2, 2]</code>
+                </p>
+                <div class="array-visual">
+                    <div class="array-item">
+                        <div class="index">i = 0</div>
+                        <div class="value-box">2</div>
+                        <div class="label">2₁</div>
+                    </div>
+                    <div class="array-item">
+                        <div class="index">i = 1</div>
+                        <div class="value-box">2</div>
+                        <div class="label">2₂</div>
+                    </div>
+                    <div class="array-item">
+                        <div class="index">i = 2</div>
+                        <div class="value-box">2</div>
+                        <div class="label">2₃</div>
+                    </div>
+                    <div class="array-item">
+                        <div class="index">i = 3</div>
+                        <div class="value-box">2</div>
+                        <div class="label">2₄</div>
+                    </div>
+                </div>
+                <div style="text-align: center; font-size: 18px; font-weight: bold; color: #667eea; margin-top: 15px;">
+                    freq[2] = 4
+                </div>
+            </div>
+        </div>
+
+        <!-- THE QUESTION -->
+        <div class="section">
+            <h2>❓ The Question</h2>
+            <div class="highlight-box">
+                <strong style="font-size: 18px;">How many ways can we pick THREE 2's to form the triplet (2, 2, 2)?</strong>
+                <p style="margin: 10px 0 0 0;">
+                    We need to choose 3 positions from 4 available positions where all have the value "2".
+                </p>
+            </div>
+        </div>
+
+        <!-- THE FORMULA -->
+        <div class="formula-section">
+            <div class="formula-title">📐 The Combination Formula C(n, 3)</div>
+            <div class="formula-box">
+C(n, 3) = n! / (3! × (n-3)!)
+            </div>
+            <div class="formula-box">
+C(n, 3) = n × (n-1) × (n-2) / (3 × 2 × 1)
+            </div>
+            <div class="formula-box">
+C(n, 3) = n × (n-1) × (n-2) / 6
+            </div>
+            <div style="margin-top: 15px; font-size: 16px;">
+                Where <strong>n = freq[x]</strong> (the number of times value x appears)
+            </div>
+        </div>
+
+        <!-- REQUIREMENT -->
+        <div class="section">
+            <h2>⚠️ Requirement Check</h2>
+            <div class="warning-box">
+                <strong>IMPORTANT:</strong> To form pattern (x, x, x), we need:<br>
+                <code style="font-size: 16px; background: white; padding: 5px 10px; border-radius: 4px; display: inline-block; margin-top: 10px;">
+                    freq[x] ≥ 3
+                </code>
+                <p style="margin: 10px 0 0 0;">
+                    ✓ In our example: freq[2] = 4, which is ≥ 3, so we CAN form this pattern!
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP BY STEP CALCULATION -->
+        <div class="section">
+            <h2>🧮 Step-by-Step Calculation</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Identify n:</strong> n = freq[2] = 4
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Apply the formula:</strong><br>
+                <div class="math-derivation">
+                    <div class="math-step">C(4, 3) = 4 × (4-1) × (4-2) / 6</div>
+                    <div class="math-step">C(4, 3) = 4 × 3 × 2 / 6</div>
+                    <div class="math-step">C(4, 3) = 24 / 6</div>
+                    <div class="math-step" style="background: #e8f5e9; font-weight: bold;">C(4, 3) = 4</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Result:</strong> There are <strong style="color: #4caf50; font-size: 20px;">4 ways</strong> to choose 3 values from 4 values of "2"
+            </div>
+        </div>
+
+        <!-- ALL COMBINATIONS -->
+        <div class="section">
+            <h2>📋 All 4 Valid Combinations</h2>
+            <div class="combinations-grid">
+                <div class="combination-card">
+                    <h4>Combination 1</h4>
+                    <div class="triplet-visual">
+                        <div class="mini-box">2₁</div>
+                        <span>+</span>
+                        <div class="mini-box">2₂</div>
+                        <span>+</span>
+                        <div class="mini-box">2₃</div>
+                    </div>
+                    <div class="indices">Indices: (0, 1, 2)</div>
+                    <div class="indices">Values: (2, 2, 2) ✓</div>
+                </div>
+
+                <div class="combination-card">
+                    <h4>Combination 2</h4>
+                    <div class="triplet-visual">
+                        <div class="mini-box">2₁</div>
+                        <span>+</span>
+                        <div class="mini-box">2₂</div>
+                        <span>+</span>
+                        <div class="mini-box">2₄</div>
+                    </div>
+                    <div class="indices">Indices: (0, 1, 3)</div>
+                    <div class="indices">Values: (2, 2, 2) ✓</div>
+                </div>
+
+                <div class="combination-card">
+                    <h4>Combination 3</h4>
+                    <div class="triplet-visual">
+                        <div class="mini-box">2₁</div>
+                        <span>+</span>
+                        <div class="mini-box">2₃</div>
+                        <span>+</span>
+                        <div class="mini-box">2₄</div>
+                    </div>
+                    <div class="indices">Indices: (0, 2, 3)</div>
+                    <div class="indices">Values: (2, 2, 2) ✓</div>
+                </div>
+
+                <div class="combination-card">
+                    <h4>Combination 4</h4>
+                    <div class="triplet-visual">
+                        <div class="mini-box">2₂</div>
+                        <span>+</span>
+                        <div class="mini-box">2₃</div>
+                        <span>+</span>
+                        <div class="mini-box">2₄</div>
+                    </div>
+                    <div class="indices">Indices: (1, 2, 3)</div>
+                    <div class="indices">Values: (2, 2, 2) ✓</div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <strong>✓ All combinations satisfy i < j < k</strong><br>
+                Each combination picks 3 different positions, and since we always pick in order, the constraint is automatically satisfied!
+            </div>
+        </div>
+
+        <!-- WHY DIVIDE BY 6 -->
+        <div class="section">
+            <h2>🤔 Why Divide by 6?</h2>
+            <div class="highlight-box">
+                <p><strong>The Logic:</strong></p>
+                <p>If we were picking with order mattering (permutations), we'd have:</p>
+                <div class="math-derivation">
+                    <div class="math-step">First pick: 4 choices</div>
+                    <div class="math-step">Second pick: 3 remaining choices</div>
+                    <div class="math-step">Third pick: 2 remaining choices</div>
+                    <div class="math-step">Total ordered ways: 4 × 3 × 2 = 24</div>
+                </div>
+                <p style="margin-top: 15px;"><strong>BUT!</strong> Order doesn't matter for us. The triplet (2₁, 2₂, 2₃) is the same as (2₃, 2₁, 2₂).</p>
+                <p>How many ways can we arrange 3 items? <strong>3! = 3 × 2 × 1 = 6 ways</strong></p>
+                <div class="math-derivation">
+                    <div class="math-step">Combinations = Permutations / Arrangements</div>
+                    <div class="math-step">C(4, 3) = 24 / 6 = 4</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARISON TABLE -->
+        <div class="section">
+            <h2>📊 Comparison: Different Values of freq[x]</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>freq[x]</th>
+                        <th>Can form (x,x,x)?</th>
+                        <th>Formula</th>
+                        <th>Calculation</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>❌ No (need ≥3)</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>✅ Yes</td>
+                        <td>3×2×1 / 6</td>
+                        <td>6 / 6</td>
+                        <td><strong>1</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>✅ Yes</td>
+                        <td>4×3×2 / 6</td>
+                        <td>24 / 6</td>
+                        <td><strong>4</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>✅ Yes</td>
+                        <td>5×4×3 / 6</td>
+                        <td>60 / 6</td>
+                        <td><strong>10</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>✅ Yes</td>
+                        <td>6×5×4 / 6</td>
+                        <td>120 / 6</td>
+                        <td><strong>20</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- COMPARISON WITH OTHER CASES -->
+        <div class="section">
+            <h2>🔄 Comparison: All Three Cases</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Case</th>
+                        <th>Pattern</th>
+                        <th>Requirement</th>
+                        <th>Formula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Case 1</strong></td>
+                        <td>(x, x, x)</td>
+                        <td>freq[x] ≥ 3</td>
+                        <td>C(freq[x], 3) = freq[x]×(freq[x]-1)×(freq[x]-2) / 6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case 2a</strong></td>
+                        <td>(x, x, y)</td>
+                        <td>freq[x] ≥ 2, freq[y] ≥ 1</td>
+                        <td>C(freq[x], 2) × freq[y] = freq[x]×(freq[x]-1) / 2 × freq[y]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case 2b</strong></td>
+                        <td>(x, y, y)</td>
+                        <td>freq[x] ≥ 1, freq[y] ≥ 2</td>
+                        <td>freq[x] × C(freq[y], 2) = freq[x] × freq[y]×(freq[y]-1) / 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case 3</strong></td>
+                        <td>(x, y, z)</td>
+                        <td>freq[x] ≥ 1, freq[y] ≥ 1, freq[z] ≥ 1</td>
+                        <td>freq[x] × freq[y] × freq[z]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- KEY INSIGHT -->
+        <div class="insight-box" style="font-size: 16px; line-height: 1.8;">
+            <strong style="font-size: 18px;">🎯 Key Insight:</strong><br><br>
+            <strong>Case 1</strong> divides by <strong>6</strong> (picking 3 from n)<br>
+            <strong>Case 2</strong> divides by <strong>2</strong> (picking 2 from n)<br>
+            <strong>Case 3</strong> doesn't divide (picking 1 from each)<br><br>
+            The more items we pick from the same value, the more we divide to avoid counting duplicates!
+        </div>
+    </div>
+</body>
+</html>

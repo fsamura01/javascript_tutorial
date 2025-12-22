@@ -1,82 +1,60 @@
 /**
- * Advantage Shuffle - JavaScript Implementation
- * Pattern: Greedy Algorithm with Optimal Assignment
- *
- * Strategy: For each value in nums2, assign the smallest value from nums1
- * that can beat it. If no value can beat it, assign the smallest remaining value.
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number}
  */
+var threeSumMulti = function (arr, target) {
+  const MOD = 1_000_000_007;
 
-function advantageCount(nums1, nums2) {
-  const n = nums1.length;
+  // Step 1: Build frequency map
+  const freq = new Array(101).fill(0);
+  for (let num of arr) {
+    freq[num]++;
+  }
 
-  // Step 1: Sort nums1 to enable efficient "smallest winning value" lookup
-  // This allows us to use two pointers to find optimal assignments
-  nums1.sort((a, b) => a - b);
+  let result = 0;
 
-  // Step 2: Create pairs of (value, originalIndex) for nums2
-  // We need to track original indices because we'll sort by value
-  // but need to place results back in their original positions
-  const nums2WithIndices = nums2.map((val, idx) => [val, idx]);
+  // Step 2: Iterate through all possible triplets (x, y, z) where x <= y <= z
+  for (let x = 0; x <= 100; x++) {
+    if (freq[x] === 0) continue;
 
-  // Step 3: Sort nums2 pairs in descending order by value
-  // We process larger values first to ensure we save appropriate cards
-  nums2WithIndices.sort((a, b) => b[0] - a[0]);
+    for (let y = x; y <= 100; y++) {
+      if (freq[y] === 0) continue;
 
-  // Step 4: Initialize result array and two pointers
-  const result = new Array(n);
-  let left = 0; // Points to smallest available value in nums1
-  let right = n - 1; // Points to largest available value in nums1
+      let z = target - x - y;
 
-  // Step 5: Process each value in nums2 (now in descending order)
-  for (const [targetValue, originalIndex] of nums2WithIndices) {
-    // Greedy choice: Can our largest remaining card beat this target?
-    if (nums1[right] > targetValue) {
-      // Yes! Use the largest card (it's the only one that can win)
-      // Place it at the original position in nums2
-      result[originalIndex] = nums1[right];
-      right--; // Mark this card as used
-    } else {
-      // No card can beat this target, so "throw away" our smallest card
-      // This preserves larger cards for winnable battles
-      result[originalIndex] = nums1[left];
-      left++; // Mark this card as used
+      // z must be valid and maintain x <= y <= z
+      if (z < 0 || z > 100 || z < y) continue;
+      if (freq[z] === 0) continue;
+
+      // Count combinations based on cases
+      if (x === y && y === z) {
+        // Case 1: All three same (x, x, x)
+        // Need at least 3 occurrences: C(n, 3) = n*(n-1)*(n-2)/6
+        if (freq[x] >= 3) {
+          result += (freq[x] * (freq[x] - 1) * (freq[x] - 2)) / 6;
+        }
+      } else if (x === y) {
+        // Case 2a: Two same, one different (x, x, z)
+        // Need at least 2 of x: C(n, 2) = n*(n-1)/2
+        if (freq[x] >= 2) {
+          result += ((freq[x] * (freq[x] - 1)) / 2) * freq[z];
+        }
+      } else if (y === z) {
+        // Case 2b: One different, two same (x, y, y)
+        // Need at least 2 of y: C(n, 2) = n*(n-1)/2
+        if (freq[y] >= 2) {
+          result += (freq[x] * freq[y] * (freq[y] - 1)) / 2;
+        }
+      } else {
+        // Case 3: All different (x, y, z)
+        result += freq[x] * freq[y] * freq[z];
+      }
+
+      // Apply modulo
+      result %= MOD;
     }
   }
 
   return result;
-}
-
-// Alternative approach using a deque-like structure for clarity
-function advantageCountAlternative(nums1, nums2) {
-  const n = nums1.length;
-  nums1.sort((a, b) => a - b);
-
-  // Pair each nums2 value with its index and sort by value descending
-  const indexed = nums2.map((val, i) => [val, i]).sort((a, b) => b[0] - a[0]);
-
-  const result = new Array(n);
-  const available = [...nums1]; // Copy of sorted nums1
-
-  for (const [target, idx] of indexed) {
-    // Check if our best card can win
-    if (available[available.length - 1] > target) {
-      // Use the best winning card
-      result[idx] = available.pop();
-    } else {
-      // Can't win, use worst card
-      result[idx] = available.shift();
-    }
-  }
-
-  return result;
-}
-
-// Test cases
-console.log("Test 1:", advantageCount([2, 7, 11, 15], [1, 10, 4, 11]));
-// Expected: [2,11,7,15]
-
-console.log("Test 2:", advantageCount([12, 24, 8, 32], [13, 25, 32, 11]));
-// Expected: [24,32,8,12]
-
-console.log("Test 3:", advantageCount([1, 2, 3, 4], [2, 3, 4, 5]));
-// Expected: Any arrangement where smaller values are "wasted" on unwinnable positions
+};

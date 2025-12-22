@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3Sum Multiplicity Example 2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .values-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .value-group {
+            text-align: center;
+        }
+        .value-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .dot-1 { background: #ff6b6b; }
+        .dot-2 { background: #4ecdc4; }
+        .triplet-container {
+            margin: 20px 0;
+        }
+        .triplet-row {
+            display: flex;
+            gap: 10px;
+            margin: 8px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            align-items: center;
+        }
+        .mini-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .formula-step {
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .result-box {
+            background: #4caf50;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(76,175,80,0.3);
+        }
+        .explanation {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 LeetCode 923: Example 2 Visualization</h1>
+        <div class="subtitle">arr = [1,1,2,2,2,2], target = 5</div>
+
+        <div class="section">
+            <h2>📊 Step 1: Frequency Count</h2>
+            <div class="values-container">
+                <div class="value-group">
+                    <div class="value-label">Value: 1</div>
+                    <div class="dots">
+                        <div class="dot dot-1">1₁</div>
+                        <div class="dot dot-1">1₂</div>
+                    </div>
+                    <div style="margin-top: 10px; color: #666;">freq[1] = 2</div>
+                </div>
+                <div class="value-group">
+                    <div class="value-label">Value: 2</div>
+                    <div class="dots">
+                        <div class="dot dot-2">2₁</div>
+                        <div class="dot dot-2">2₂</div>
+                        <div class="dot dot-2">2₃</div>
+                        <div class="dot dot-2">2₄</div>
+                    </div>
+                    <div style="margin-top: 10px; color: #666;">freq[2] = 4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔍 Step 2: Find Valid Triplet Pattern</h2>
+            <div class="explanation">
+                <strong>Target = 5</strong><br>
+                We need three numbers that sum to 5.<br>
+                <br>
+                Valid combination: <strong>1 + 2 + 2 = 5</strong> ✓<br>
+                Pattern: (x, y, y) where x = 1, y = 2
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎲 Step 3: Count All Combinations</h2>
+            <div class="explanation">
+                <strong>Case 2b:</strong> One different (x), two same (y, y)<br>
+                We need to choose:<br>
+                • 1 value from the "1"s<br>
+                • 2 values from the "2"s
+            </div>
+
+            <h3 style="color: #667eea; margin-top: 20px;">Using 1₁:</h3>
+            <div class="triplet-container">
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₂</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₃</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₂</div> + 
+                    <div class="mini-dot dot-2">2₃</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₂</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₁</div> + 
+                    <div class="mini-dot dot-2">2₃</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-weight: bold; margin: 10px 0;">
+                = 6 combinations = C(4, 2)
+            </div>
+
+            <h3 style="color: #667eea; margin-top: 20px;">Using 1₂:</h3>
+            <div class="triplet-container">
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₂</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₃</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₁</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₂</div> + 
+                    <div class="mini-dot dot-2">2₃</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₂</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+                <div class="triplet-row">
+                    <div class="mini-dot dot-1">1₂</div> + 
+                    <div class="mini-dot dot-2">2₃</div> + 
+                    <div class="mini-dot dot-2">2₄</div>
+                </div>
+            </div>
+            <div style="text-align: center; color: #667eea; font-weight: bold; margin: 10px 0;">
+                = 6 combinations = C(4, 2)
+            </div>
+        </div>
+
+        <div class="formula-box">
+            <div style="font-size: 20px; margin-bottom: 15px;">📐 Formula for Case 2b (x, y, y):</div>
+            <div class="formula-step highlight">
+                Count = freq[x] × C(freq[y], 2)
+            </div>
+            <div class="formula-step highlight">
+                Count = freq[x] × freq[y] × (freq[y] - 1) / 2
+            </div>
+            <div class="formula-step" style="margin-top: 20px;">
+                Count = 2 × 4 × (4 - 1) / 2
+            </div>
+            <div class="formula-step">
+                Count = 2 × 4 × 3 / 2
+            </div>
+            <div class="formula-step">
+                Count = 24 / 2
+            </div>
+        </div>
+
+        <div class="result-box">
+            🎉 Final Answer: 12
+        </div>
+
+        <div class="explanation">
+            <strong>Key Insight:</strong><br>
+            • We have <strong>2 choices</strong> for which "1" to pick<br>
+            • For each "1", we have <strong>C(4, 2) = 6 choices</strong> for which two "2"s to pick<br>
+            • Total: <strong>2 × 6 = 12</strong> valid triplets!
+        </div>
+    </div>
+</body>
+</html>
