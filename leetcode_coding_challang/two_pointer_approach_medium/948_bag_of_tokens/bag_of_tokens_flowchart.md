@@ -1,4 +1,4 @@
-# **948. Bag of Tokens**
+# **948. Bag of Tokens Flowchart**
 
 ```mermaid
 flowchart TD

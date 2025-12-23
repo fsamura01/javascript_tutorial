@@ -3,54 +3,41 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 948. Bag of Tokens.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 167: 167. Two Sum II - Input Array Is Sorted.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 948. Bag of Tokens.
+Instruction: Guide me through solving Leetcode 167. Two Sum II - Input Array Is Sorted.
 
-[You start with an initial power of power, an initial score of 0, and a bag of tokens given as an integer array tokens, where each tokens[i] denotes the value of tokeni.
+[Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
 
-Your goal is to maximize the total score by strategically playing these tokens. In one move, you can play an unplayed token in one of the two ways (but not both for the same token):
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
 
-Face-up: If your current power is at least tokens[i], you may play tokeni, losing tokens[i] power and gaining 1 score.
-Face-down: If your current score is at least 1, you may play tokeni, gaining tokens[i] power and losing 1 score.
-Return the maximum possible score you can achieve after playing any number of tokens.
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+Your solution must use only constant extra space.
 
 Example 1:
 
-Input: tokens = [100], power = 50
-
-Output: 0
-
-Explanation: Since your score is 0 initially, you cannot play the token face-down. You also cannot play it face-up since your power (50) is less than tokens[0] (100).
-
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
 Example 2:
 
-Input: tokens = [200,100], power = 150
-
-Output: 1
-
-Explanation: Play token1 (100) face-up, reducing your power to 50 and increasing your score to 1.
-
-There is no need to play token0, since you cannot play it face-up to add to your score. The maximum score achievable is 1.
-
+Input: numbers = [2,3,4], target = 6
+Output: [1,3]
+Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
 Example 3:
 
-Input: tokens = [100,200,300,400], power = 200
-
-Output: 2
-
-Explanation: Play the tokens in this order to get a score of 2:
-
-Play token0 (100) face-up, reducing power to 100 and increasing score to 1.
-Play token3 (400) face-down, increasing power to 500 and reducing score to 0.
-Play token1 (200) face-up, reducing power to 300 and increasing score to 1.
-Play token2 (300) face-up, reducing power to 0 and increasing score to 2.
-The maximum score achievable is 2.
+Input: numbers = [-1,0], target = -1
+Output: [1,2]
+Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
 
 Constraints:
 
-0 <= tokens.length <= 1000
-0 <= tokens[i], power < 104] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+2 <= numbers.length <= 3 * 104
+-1000 <= numbers[i] <= 1000
+numbers is sorted in non-decreasing order.
+-1000 <= target <= 1000
+The tests are generated such that there is exactly one solution.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
