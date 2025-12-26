@@ -182,7 +182,8 @@ Can I afford tokens[left]? (power >= tokens[left])
           └─ NO → STUCK! Break out of loop
 ```
 
-**Step 4: Return maxScore**
+**Step 4:
+Return maxScore**
 
 ### Why This Works
 
