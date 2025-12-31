@@ -3,59 +3,43 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 962. Maximum Width Ramp.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 969. Pancake Sorting.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 962. Maximum Width Ramp.
+Instruction: Guide me through solving Leetcode 969. Pancake Sorting.
 
-[Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+[Given an array of integers arr, sort the array by performing a series of pancake flips.
 
-Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+In one pancake flip we do the following steps:
 
-The tests are generated such that there is exactly one solution. You may not use the same element twice.
+Choose an integer k where 1 <= k <= arr.length.
+Reverse the sub-array arr[0...k-1] (0-indexed).
+For example, if arr = [3,2,1,4] and we performed a pancake flip choosing k = 3, we reverse the sub-array [3,2,1], so arr = [1,2,3,4] after the pancake flip at k = 3.
 
-Your solution must use only constant extra space.
-
-Example 1:
-
-Input: numbers = [2,7,11,15], target = 9
-Output: [1,2]
-Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
-Example 2:
-
-Input: numbers = [2,3,4], target = 6
-Output: [1,3]
-Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
-Example 3:
-
-Input: numbers = [-1,0], target = -1
-Output: [1,2]
-Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
-
-Constraints:
-
-2 <= numbers.length <= 3 * 104
--1000 <= numbers[i] <= 1000
-numbers is sorted in non-decreasing order.
--1000 <= target <= 1000
-The tests are generated such that there is exactly one solution.A ramp in an integer array nums is a pair (i, j) for which i < j and nums[i] <= nums[j]. The width of such a ramp is j - i.
-
-Given an integer array nums, return the maximum width of a ramp in nums. If there is no ramp in nums, return 0.
+Return an array of the k-values corresponding to a sequence of pancake flips that sort arr. Any valid answer that sorts the array within 10 * arr.length flips will be judged as correct.
 
 Example 1:
 
-Input: nums = [6,0,8,2,1,5]
-Output: 4
-Explanation: The maximum width ramp is achieved at (i, j) = (1, 5): nums[1] = 0 and nums[5] = 5.
+Input: arr = [3,2,4,1]
+Output: [4,2,4,3]
+Explanation:
+We perform 4 pancake flips, with k values 4, 2, 4, and 3.
+Starting state: arr = [3, 2, 4, 1]
+After 1st flip (k = 4): arr = [1, 4, 2, 3]
+After 2nd flip (k = 2): arr = [4, 1, 2, 3]
+After 3rd flip (k = 4): arr = [3, 2, 1, 4]
+After 4th flip (k = 3): arr = [1, 2, 3, 4], which is sorted.
 Example 2:
 
-Input: nums = [9,8,1,0,1,9,4,0,4,1]
-Output: 7
-Explanation: The maximum width ramp is achieved at (i, j) = (2, 9): nums[2] = 1 and nums[9] = 1.
+Input: arr = [1,2,3]
+Output: []
+Explanation: The input is already sorted, so there is no need to flip anything.
+Note that other answers, such as [3, 3], would also be accepted.
 
 Constraints:
 
-2 <= nums.length <= 5 *104
-0 <= nums[i] <= 5* 104] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= arr.length <= 100
+1 <= arr[i] <= arr.length
+All integers in arr are unique (i.e. arr is a permutation of the integers from 1 to arr.length).] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 

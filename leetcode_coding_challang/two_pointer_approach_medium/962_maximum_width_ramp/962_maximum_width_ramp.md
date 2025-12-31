@@ -384,5 +384,3 @@ var maxWidthRamp = function(nums) {
 - Array size > 10^4 (need better than O(n²))
 
 **Think: Monotonic Stack might help!**
-
-Feel free to ask if you'd like me to explain any part in more detail or walk through additional examples! 🚀
