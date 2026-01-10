@@ -3,41 +3,44 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 986. Interval List Intersections.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1023. Camelcase Matching.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 986. Interval List Intersections.
+Instruction: Guide me through solving Leetcode 1023. Camelcase Matching.
 
-[You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and in sorted order.
+[Given an array of strings queries and a string pattern, return a boolean array answer where answer[i] is true if queries[i] matches pattern, and false otherwise.
 
-Return the intersection of these two interval lists.
-
-A closed interval [a, b] (with a <= b) denotes the set of real numbers x with a <= x <= b.
-
-The intersection of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].
+A query word queries[i] matches pattern if you can insert lowercase English letters into the pattern so that it equals the query. You may insert a character at any position in pattern or you may choose not to insert any characters at all.
 
 Example 1:
 
-Input: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]
-Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FB"
+Output: [true,false,true,true,false]
+Explanation: "FooBar" can be generated like this "F" + "oo" + "B" + "ar".
+"FootBall" can be generated like this "F" + "oot" + "B" + "all".
+"FrameBuffer" can be generated like this "F" + "rame" + "B" + "uffer".
 Example 2:
 
-Input: firstList = [[1,3],[5,9]], secondList = []
-Output: []
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBa"
+Output: [true,false,true,false,false]
+Explanation: "FooBar" can be generated like this "Fo" + "o" + "Ba" + "r".
+"FootBall" can be generated like this "Fo" + "ot" + "Ba" + "ll".
+Example 3:
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBaT"
+Output: [false,true,false,false,false]
+Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "T" + "est".
 
 Constraints:
 
-0 <= firstList.length, secondList.length <= 1000
-firstList.length + secondList.length >= 1
-0 <= starti < endi <= 109
-endi < starti+1
-0 <= startj < endj <= 109
-endj < startj+1.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= pattern.length, queries.length <= 100
+1 <= queries[i].length <= 100
+queries[i] and pattern consist of English letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
 1. **Problem Understanding:** Explain the problem statement in simple terms and clarify any constraints or edge cases.
 
-2. **Constraints Of The Problem** Help me understanding the the constraints of the problem
+2. **Constraints Of The Problem** Help me understanding what the constraints tell us about the problem structure
 
 3. **Highlight keyword:** Highlight keywords to help me solve similar problems in the future.
 
