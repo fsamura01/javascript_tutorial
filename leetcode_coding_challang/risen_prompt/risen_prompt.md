@@ -3,38 +3,41 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1023. Camelcase Matching.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1048. Longest String Chain.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 1023. Camelcase Matching.
+Instruction: Guide me through solving Leetcode 1048. Longest String Chain.
 
-[Given an array of strings queries and a string pattern, return a boolean array answer where answer[i] is true if queries[i] matches pattern, and false otherwise.
+[ou are given an array of words where each word consists of lowercase English letters.
 
-A query word queries[i] matches pattern if you can insert lowercase English letters into the pattern so that it equals the query. You may insert a character at any position in pattern or you may choose not to insert any characters at all.
+wordA is a predecessor of wordB if and only if we can insert exactly one letter anywhere in wordA without changing the order of the other characters to make it equal to wordB.
+
+For example, "abc" is a predecessor of "abac", while "cba" is not a predecessor of "bcad".
+A word chain is a sequence of words [word1, word2, ..., wordk] with k >= 1, where word1 is a predecessor of word2, word2 is a predecessor of word3, and so on. A single word is trivially a word chain with k == 1.
+
+Return the length of the longest possible word chain with words chosen from the given list of words.
 
 Example 1:
 
-Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FB"
-Output: [true,false,true,true,false]
-Explanation: "FooBar" can be generated like this "F" + "oo" + "B" + "ar".
-"FootBall" can be generated like this "F" + "oot" + "B" + "all".
-"FrameBuffer" can be generated like this "F" + "rame" + "B" + "uffer".
+Input: words = ["a","b","ba","bca","bda","bdca"]
+Output: 4
+Explanation: One of the longest word chains is ["a","ba","bda","bdca"].
 Example 2:
 
-Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBa"
-Output: [true,false,true,false,false]
-Explanation: "FooBar" can be generated like this "Fo" + "o" + "Ba" + "r".
-"FootBall" can be generated like this "Fo" + "ot" + "Ba" + "ll".
+Input: words = ["xbc","pcxbcf","xb","cxbc","pcxbc"]
+Output: 5
+Explanation: All the words can be put in a word chain ["xb", "xbc", "cxbc", "pcxbc", "pcxbcf"].
 Example 3:
 
-Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBaT"
-Output: [false,true,false,false,false]
-Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "T" + "est".
+Input: words = ["abcd","dbqca"]
+Output: 1
+Explanation: The trivial word chain ["abcd"] is one of the longest word chains.
+["abcd","dbqca"] is not a valid word chain because the ordering of the letters is changed.
 
 Constraints:
 
-1 <= pattern.length, queries.length <= 100
-1 <= queries[i].length <= 100
-queries[i] and pattern consist of English letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of lowercase English letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
