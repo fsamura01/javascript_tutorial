@@ -3,41 +3,55 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1048. Longest String Chain.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1237. Find Positive Integer Solution for a Given Equation.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 1048. Longest String Chain.
+Instruction: Guide me through solving Leetcode 1237. Find Positive Integer Solution for a Given Equation.
 
-[ou are given an array of words where each word consists of lowercase English letters.
+[Given a callable function f(x, y) with a hidden formula and a value z, reverse engineer the formula and return all positive integer pairs x and y where f(x,y) == z. You may return the pairs in any order.
 
-wordA is a predecessor of wordB if and only if we can insert exactly one letter anywhere in wordA without changing the order of the other characters to make it equal to wordB.
+While the exact formula is hidden, the function is monotonically increasing, i.e.:
 
-For example, "abc" is a predecessor of "abac", while "cba" is not a predecessor of "bcad".
-A word chain is a sequence of words [word1, word2, ..., wordk] with k >= 1, where word1 is a predecessor of word2, word2 is a predecessor of word3, and so on. A single word is trivially a word chain with k == 1.
+f(x, y) < f(x + 1, y)
+f(x, y) < f(x, y + 1)
+The function interface is defined like this:
 
-Return the length of the longest possible word chain with words chosen from the given list of words.
+interface CustomFunction {
+public:
+// Returns some positive integer f(x, y) for two positive integers x and y based on a formula.
+int f(int x, int y);
+};
+We will judge your solution as follows:
+
+The judge has a list of 9 hidden implementations of CustomFunction, along with a way to generate an answer key of all valid pairs for a specific z.
+The judge will receive two inputs: a function_id (to determine which implementation to test your code with), and the target z.
+The judge will call your findSolution and compare your results with the answer key.
+If your results match the answer key, your solution will be Accepted.
 
 Example 1:
 
-Input: words = ["a","b","ba","bca","bda","bdca"]
-Output: 4
-Explanation: One of the longest word chains is ["a","ba","bda","bdca"].
+Input: function_id = 1, z = 5
+Output: [[1,4],[2,3],[3,2],[4,1]]
+Explanation: The hidden formula for function_id = 1 is f(x, y) = x + y.
+The following positive integer values of x and y make f(x, y) equal to 5:
+x=1, y=4 -> f(1, 4) = 1 + 4 = 5.
+x=2, y=3 -> f(2, 3) = 2 + 3 = 5.
+x=3, y=2 -> f(3, 2) = 3 + 2 = 5.
+x=4, y=1 -> f(4, 1) = 4 + 1 = 5.
 Example 2:
 
-Input: words = ["xbc","pcxbcf","xb","cxbc","pcxbc"]
-Output: 5
-Explanation: All the words can be put in a word chain ["xb", "xbc", "cxbc", "pcxbc", "pcxbcf"].
-Example 3:
-
-Input: words = ["abcd","dbqca"]
-Output: 1
-Explanation: The trivial word chain ["abcd"] is one of the longest word chains.
-["abcd","dbqca"] is not a valid word chain because the ordering of the letters is changed.
+Input: function*id = 2, z = 5
+Output: [[1,5],[5,1]]
+Explanation: The hidden formula for function_id = 2 is f(x, y) = x \_y.
+The following positive integer values of x and y make f(x, y) equal to 5:
+x=1, y=5 -> f(1, 5) = 1* 5 = 5.
+x=5, y=1 -> f(5, 1) = 5 \* 1 = 5.
 
 Constraints:
 
-1 <= words.length <= 1000
-1 <= words[i].length <= 16
-words[i] only consists of lowercase English letters.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= function_id <= 9
+1 <= z <= 100
+It is guaranteed that the solutions of f(x, y) == z will be in the range 1 <= x, y <= 1000.
+It is also guaranteed that f(x, y) will fit in 32 bit signed integer if 1 <= x, y <= 1000.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
