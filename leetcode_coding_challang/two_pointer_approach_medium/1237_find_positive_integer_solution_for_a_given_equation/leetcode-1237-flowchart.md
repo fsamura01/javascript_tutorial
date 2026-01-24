@@ -24,10 +24,10 @@ flowchart TD
     TooLarge --> DecY[Decrement y--<br/>Reasoning: f is increasing in y]
     DecY --> Check
 
-    style Start fill:#e1f5e1
-    style Return fill:#ffe1e1
-    style Found fill:#fff4e1
-    style Compare fill:#e1f0ff
-    style Check fill:#f0e1ff
+    style Start fill:#e1f5e
+    style Return fill:#ffe1e
+    style Found fill:#fff4e
+    style Compare fill:#e1f0f
+    style Check fill:#f0e1f
 
 ```

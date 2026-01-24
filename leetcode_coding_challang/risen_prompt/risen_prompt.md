@@ -3,55 +3,45 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode 1237. Find Positive Integer Solution for a Given Equation.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1471. The k Strongest Values in an Array.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving Leetcode 1237. Find Positive Integer Solution for a Given Equation.
+Instruction: Guide me through solving 1471. The k Strongest Values in an Array.
 
-[Given a callable function f(x, y) with a hidden formula and a value z, reverse engineer the formula and return all positive integer pairs x and y where f(x,y) == z. You may return the pairs in any order.
+[Given an array of integers arr and an integer k.
 
-While the exact formula is hidden, the function is monotonically increasing, i.e.:
+A value arr[i] is said to be stronger than a value arr[j] if |arr[i] - m| > |arr[j] - m| where m is the centre of the array.
+If |arr[i] - m| == |arr[j] - m|, then arr[i] is said to be stronger than arr[j] if arr[i] > arr[j].
 
-f(x, y) < f(x + 1, y)
-f(x, y) < f(x, y + 1)
-The function interface is defined like this:
+Return a list of the strongest k values in the array. return the answer in any arbitrary order.
 
-interface CustomFunction {
-public:
-// Returns some positive integer f(x, y) for two positive integers x and y based on a formula.
-int f(int x, int y);
-};
-We will judge your solution as follows:
+The centre is the middle value in an ordered integer list. More formally, if the length of the list is n, the centre is the element in position ((n - 1) / 2) in the sorted list (0-indexed).
 
-The judge has a list of 9 hidden implementations of CustomFunction, along with a way to generate an answer key of all valid pairs for a specific z.
-The judge will receive two inputs: a function_id (to determine which implementation to test your code with), and the target z.
-The judge will call your findSolution and compare your results with the answer key.
-If your results match the answer key, your solution will be Accepted.
+For arr = [6, -3, 7, 2, 11], n = 5 and the centre is obtained by sorting the array arr = [-3, 2, 6, 7, 11] and the centre is arr[m] where m = ((5 - 1) / 2) = 2. The centre is 6.
+For arr = [-7, 22, 17, 3], n = 4 and the centre is obtained by sorting the array arr = [-7, 3, 17, 22] and the centre is arr[m] where m = ((4 - 1) / 2) = 1. The centre is 3.
 
 Example 1:
 
-Input: function_id = 1, z = 5
-Output: [[1,4],[2,3],[3,2],[4,1]]
-Explanation: The hidden formula for function_id = 1 is f(x, y) = x + y.
-The following positive integer values of x and y make f(x, y) equal to 5:
-x=1, y=4 -> f(1, 4) = 1 + 4 = 5.
-x=2, y=3 -> f(2, 3) = 2 + 3 = 5.
-x=3, y=2 -> f(3, 2) = 3 + 2 = 5.
-x=4, y=1 -> f(4, 1) = 4 + 1 = 5.
+Input: arr = [1,2,3,4,5], k = 2
+Output: [5,1]
+Explanation: Centre is 3, the elements of the array sorted by the strongest are [5,1,4,2,3]. The strongest 2 elements are [5, 1]. [1, 5] is also accepted answer.
+Please note that although |5 - 3| == |1 - 3| but 5 is stronger than 1 because 5 > 1.
 Example 2:
 
-Input: function*id = 2, z = 5
-Output: [[1,5],[5,1]]
-Explanation: The hidden formula for function_id = 2 is f(x, y) = x \_y.
-The following positive integer values of x and y make f(x, y) equal to 5:
-x=1, y=5 -> f(1, 5) = 1* 5 = 5.
-x=5, y=1 -> f(5, 1) = 5 \* 1 = 5.
+Input: arr = [1,1,3,5,5], k = 2
+Output: [5,5]
+Explanation: Centre is 3, the elements of the array sorted by the strongest are [5,5,1,1,3]. The strongest 2 elements are [5, 5].
+Example 3:
+
+Input: arr = [6,7,11,7,6,8], k = 5
+Output: [11,8,6,6,7]
+Explanation: Centre is 7, the elements of the array sorted by the strongest are [11,8,6,6,7,7].
+Any permutation of [11,8,6,6,7] is accepted.
 
 Constraints:
 
-1 <= function_id <= 9
-1 <= z <= 100
-It is guaranteed that the solutions of f(x, y) == z will be in the range 1 <= x, y <= 1000.
-It is also guaranteed that f(x, y) will fit in 32 bit signed integer if 1 <= x, y <= 1000.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= arr.length <= 105
+-105 <= arr[i] <= 105
+1 <= k <= arr.length.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
