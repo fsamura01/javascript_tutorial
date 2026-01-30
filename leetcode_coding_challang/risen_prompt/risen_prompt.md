@@ -3,45 +3,29 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1471. The k Strongest Values in an Array.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 215. Kth Largest Element in an Array.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 1471. The k Strongest Values in an Array.
+Instruction: Guide me through solving 215. Kth Largest Element in an Array.
 
-[Given an array of integers arr and an integer k.
+[Given an integer array nums and an integer k, return the kth largest element in the array.
 
-A value arr[i] is said to be stronger than a value arr[j] if |arr[i] - m| > |arr[j] - m| where m is the centre of the array.
-If |arr[i] - m| == |arr[j] - m|, then arr[i] is said to be stronger than arr[j] if arr[i] > arr[j].
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
-Return a list of the strongest k values in the array. return the answer in any arbitrary order.
-
-The centre is the middle value in an ordered integer list. More formally, if the length of the list is n, the centre is the element in position ((n - 1) / 2) in the sorted list (0-indexed).
-
-For arr = [6, -3, 7, 2, 11], n = 5 and the centre is obtained by sorting the array arr = [-3, 2, 6, 7, 11] and the centre is arr[m] where m = ((5 - 1) / 2) = 2. The centre is 6.
-For arr = [-7, 22, 17, 3], n = 4 and the centre is obtained by sorting the array arr = [-7, 3, 17, 22] and the centre is arr[m] where m = ((4 - 1) / 2) = 1. The centre is 3.
+Can you solve it without sorting?
 
 Example 1:
 
-Input: arr = [1,2,3,4,5], k = 2
-Output: [5,1]
-Explanation: Centre is 3, the elements of the array sorted by the strongest are [5,1,4,2,3]. The strongest 2 elements are [5, 1]. [1, 5] is also accepted answer.
-Please note that although |5 - 3| == |1 - 3| but 5 is stronger than 1 because 5 > 1.
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
 Example 2:
 
-Input: arr = [1,1,3,5,5], k = 2
-Output: [5,5]
-Explanation: Centre is 3, the elements of the array sorted by the strongest are [5,5,1,1,3]. The strongest 2 elements are [5, 5].
-Example 3:
-
-Input: arr = [6,7,11,7,6,8], k = 5
-Output: [11,8,6,6,7]
-Explanation: Centre is 7, the elements of the array sorted by the strongest are [11,8,6,6,7,7].
-Any permutation of [11,8,6,6,7] is accepted.
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
 
 Constraints:
 
-1 <= arr.length <= 105
--105 <= arr[i] <= 105
-1 <= k <= arr.length.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 

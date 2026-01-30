@@ -1,69 +1,46 @@
 /**
- * Pancake Sorting Solution
- * @param {number[]} arr - Array to sort
- * @return {number[]} - Array of k values for pancake flips
+ * JavaScript Implementation using QuickSelect
+ * Time: O(n) average, O(n²) worst, Space: O(1)
  */
-var pancakeSort = function (arr) {
-  const result = [];
-  const n = arr.length;
+var findKthLargest = function (nums, k) {
+  // Convert to finding (n-k)th smallest (0-indexed)
+  const targetIndex = nums.length - k;
 
-  // Work backwards from the end of array
-  for (let currentSize = n; currentSize > 1; currentSize--) {
-    // Find the index of maximum element in arr[0...currentSize-1]
-    let maxIndex = findMaxIndex(arr, currentSize);
+  const quickSelect = (left, right) => {
+    // Choose random pivot to avoid worst case
+    const pivotIndex = left + Math.floor(Math.random() * (right - left + 1));
+    const pivot = nums[pivotIndex];
 
-    // If max is already at the end of current range, skip
-    if (maxIndex === currentSize - 1) {
-      continue;
+    // Move pivot to end
+    [nums[pivotIndex], nums[right]] = [nums[right], nums[pivotIndex]];
+
+    // Partition: elements < pivot go to left
+    let storeIndex = left;
+    for (let i = left; i < right; i++) {
+      if (nums[i] < pivot) {
+        [nums[i], nums[storeIndex]] = [nums[storeIndex], nums[i]];
+        storeIndex++;
+      }
     }
 
-    // Step 1: If max is not at position 0, flip it to position 0
-    if (maxIndex !== 0) {
-      flip(arr, maxIndex + 1); // k = maxIndex + 1 (1-indexed)
-      result.push(maxIndex + 1);
+    // Move pivot to its final position
+    [nums[storeIndex], nums[right]] = [nums[right], nums[storeIndex]];
+
+    // Check if we found the target
+    if (storeIndex === targetIndex) {
+      return nums[storeIndex];
+    } else if (storeIndex < targetIndex) {
+      // Target is in right partition
+      return quickSelect(storeIndex + 1, right);
+    } else {
+      // Target is in left partition
+      return quickSelect(left, storeIndex - 1);
     }
+  };
 
-    // Step 2: Flip to move max from position 0 to end of current range
-    flip(arr, currentSize); // k = currentSize (1-indexed)
-    result.push(currentSize);
-  }
-
-  return result;
+  return quickSelect(0, nums.length - 1);
 };
 
-/**
- * Find index of maximum element in arr[0...size-1]
- * @param {number[]} arr - The array
- * @param {number} size - Search range size
- * @return {number} - Index of maximum element
- */
-function findMaxIndex(arr, size) {
-  let maxIndex = 0;
-  for (let i = 1; i < size; i++) {
-    if (arr[i] > arr[maxIndex]) {
-      maxIndex = i;
-    }
-  }
-  return maxIndex;
-}
-
-/**
- * Reverse arr[0...k-1] (pancake flip operation)
- * @param {number[]} arr - The array to flip
- * @param {number} k - Flip size (1-indexed, as per problem)
- */
-function flip(arr, k) {
-  let left = 0;
-  let right = k - 1; // Convert to 0-indexed
-
-  while (left < right) {
-    // Swap elements
-    [arr[left], arr[right]] = [arr[right], arr[left]];
-    left++;
-    right--;
-  }
-}
-
-// Test cases
-console.log(pancakeSort([3, 2, 4, 1])); // Possible output: [3, 4, 2, 3, 2]
-console.log(pancakeSort([1, 2, 3])); // Output: []
+// Example usage:
+console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2)); // Output: 5
+console.log(findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)); // Output: 4
