@@ -3,29 +3,38 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 215. Kth Largest Element in an Array.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 347. Top K Frequent Elements.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 215. Kth Largest Element in an Array.
+Instruction: Guide me through solving 347. Top K Frequent Elements.
 
-[Given an integer array nums and an integer k, return the kth largest element in the array.
-
-Note that it is the kth largest element in the sorted order, not the kth distinct element.
-
-Can you solve it without sorting?
+[Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 
 Example 1:
 
-Input: nums = [3,2,1,5,6,4], k = 2
-Output: 5
+Input: nums = [1,1,1,2,2,3], k = 2
+
+Output: [1,2]
+
 Example 2:
 
-Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
-Output: 4
+Input: nums = [1], k = 1
+
+Output: [1]
+
+Example 3:
+
+Input: nums = [1,2,1,2,1,2,3,1,3,2], k = 2
+
+Output: [1,2]
 
 Constraints:
 
-1 <= k <= nums.length <= 105
--104 <= nums[i] <= 104.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+k is in the range [1, the number of unique elements in the array].
+It is guaranteed that the answer is unique.
+
+Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 

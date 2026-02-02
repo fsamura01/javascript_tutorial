@@ -31,9 +31,7 @@ function topKFrequent(nums, k) {
 
 });
    
-}
-
-  `;
+} `;
 
   for (let num of nums) {
     frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
