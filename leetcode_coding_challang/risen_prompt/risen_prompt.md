@@ -3,38 +3,35 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 347. Top K Frequent Elements.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 973. K Closest Points to Origin.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 347. Top K Frequent Elements.
+Instruction: Guide me through solving 973. K Closest Points to Origin.
 
-[Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+[Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+
+The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+
+You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
 
 Example 1:
 
-Input: nums = [1,1,1,2,2,3], k = 2
-
-Output: [1,2]
-
+Input: points = [[1,3],[-2,2]], k = 1
+Output: [[-2,2]]
+Explanation:
+The distance between (1, 3) and the origin is sqrt(10).
+The distance between (-2, 2) and the origin is sqrt(8).
+Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+We only want the closest k = 1 points from the origin, so the answer is just [[-2,2]].
 Example 2:
 
-Input: nums = [1], k = 1
-
-Output: [1]
-
-Example 3:
-
-Input: nums = [1,2,1,2,1,2,3,1,3,2], k = 2
-
-Output: [1,2]
+Input: points = [[3,3],[5,-1],[-2,4]], k = 2
+Output: [[3,3],[-2,4]]
+Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 
 Constraints:
 
-1 <= nums.length <= 105
--104 <= nums[i] <= 104
-k is in the range [1, the number of unique elements in the array].
-It is guaranteed that the answer is unique.
-
-Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= k <= points.length <= 104
+-104 <= xi, yi <= 104.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
