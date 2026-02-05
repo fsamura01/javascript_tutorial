@@ -161,7 +161,7 @@ Goal: Find element with exactly (k-1) = 1 element larger than it
 
 #### Partition 1: Choose pivot = 4
 
-```
+```Javascript
 After partition:
 [3, 2, 1] | 4 | [5, 6]
  ↑               ↑

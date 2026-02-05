@@ -3,35 +3,34 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 973. K Closest Points to Origin.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 9692. Top K Frequent Words.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 973. K Closest Points to Origin.
+Instruction: Guide me through solving 692. Top K Frequent Words.
 
-[Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+[Given an array of strings words and an integer k, return the k most frequent strings.
 
-The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
-
-You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+Return the answer sorted by the frequency from highest to lowest. Sort the words with the same frequency by their lexicographical order.
 
 Example 1:
 
-Input: points = [[1,3],[-2,2]], k = 1
-Output: [[-2,2]]
-Explanation:
-The distance between (1, 3) and the origin is sqrt(10).
-The distance between (-2, 2) and the origin is sqrt(8).
-Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
-We only want the closest k = 1 points from the origin, so the answer is just [[-2,2]].
+Input: words = ["i","love","leetcode","i","love","coding"], k = 2
+Output: ["i","love"]
+Explanation: "i" and "love" are the two most frequent words.
+Note that "i" comes before "love" due to a lower alphabetical order.
 Example 2:
 
-Input: points = [[3,3],[5,-1],[-2,4]], k = 2
-Output: [[3,3],[-2,4]]
-Explanation: The answer [[-2,4],[3,3]] would also be accepted.
+Input: words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4
+Output: ["the","is","sunny","day"]
+Explanation: "the", "is", "sunny" and "day" are the four most frequent words, with the number of occurrence being 4, 3, 2 and 1 respectively.
 
 Constraints:
 
-1 <= k <= points.length <= 104
--104 <= xi, yi <= 104.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= words.length <= 500
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+k is in the range [1, The number of unique words[i]]
+
+Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 

@@ -530,6 +530,29 @@ if (k > points.length / 2) {
 
 ## 11. Flowchart Design
 
+### SORTING APPROACH
+
+```mermaid
+flowchart TD
+    A["Start: points array & k"] --> B["Sort points array by distance"]
+    B --> C["Calculate for each point:<br/>distance = x² + y²<br/>Compare distances"]
+    
+    C --> D["Array sorted:<br/>closest to farthest"]
+    
+    D --> E["Take first K elements<br/>slice from 0 to k"]
+    
+    E --> Z["Return K closest points"]
+    
+    style A fill:#e1f5f
+    style B fill:#f8d7d
+    style C fill:#fff3c
+    style D fill:#d4edd
+    style E fill:#f8d7d
+    style Z fill:#d4edd
+```
+
+### MIN-HEAP APPROACH
+
 ```mermaid
 flowchart TD
     Start([Start: Points Array + K]) --> Init[Initialize Max Heap<br/>Size = 0]
@@ -537,7 +560,7 @@ flowchart TD
     
     Loop -->|Next point| CalcDist["Calculate distance²<br/>dist² = x² + y²"]
     CalcDist --> AddHeap[Add point to<br/>max heap]
-    AddHeap --> CheckSize{Heap size > K?}
+    AddHeap --> CheckSize{"Heap size > K?"}
     
     CheckSize -->|Yes| RemoveMax[Remove max element<br/>farthest point]
     CheckSize -->|No| Loop
@@ -558,12 +581,12 @@ flowchart TD
 ```mermaid
 flowchart TD
     A[Input: points, k] --> B[Create empty max heap]
-    B --> C{More points<br/>to process?}
+    B --> C{"More points<br/>to process?"}
     
     C -->|Yes| D[Get next point x, y]
     D --> E[Calculate dist² = x² + y²]
     E --> F[Insert point, dist² into heap]
-    F --> G{heap.size > k?}
+    F --> G{"heap.size > k?"}
     
     G -->|Yes| H[Extract max<br/>Remove farthest point]
     G -->|No| C
@@ -919,13 +942,13 @@ flowchart TD
     B --> C[Sort: Compare pairs using<br/>distance² comparator]
     
     C --> D{For each pair a, b}
-    D --> E[Calculate a_dist² = a[0]² + a[1]²]
-    D --> F[Calculate b_dist² = b[0]² + b[1]²]
+    D --> E["Calculate a_dist² = a[0]² + a[1]²"]
+    D --> F["Calculate b_dist² = b[0]² + b[1]²"]
     
     E --> G[Compare: a_dist² - b_dist²]
     F --> G
     
-    G --> H{Result?}
+    G --> H{"Result?"}
     H -->|Negative| I[a before b]
     H -->|Positive| J[b before a]
     H -->|Zero| K[Keep current order]
@@ -934,17 +957,17 @@ flowchart TD
     J --> L
     K --> L
     
-    L --> M{All pairs<br/>compared?}
+    L --> M{"All pairs<br/>compared?"}
     M -->|No| D
     M -->|Yes| N[Array is now sorted<br/>by distance ascending]
     
     N --> O[Slice: Take first k elements<br/>points.slice 0, k]
     O --> P[Return result]
     
-    style A fill:#90EE90
-    style P fill:#FFB6C1
-    style H fill:#FFE4B5
-    style N fill:#87CEEB
+    style A fill:#90EE9
+    style P fill:#FFB6C
+    style H fill:#FFE4B
+    style N fill:#87CEE
 ```
 
 ---
