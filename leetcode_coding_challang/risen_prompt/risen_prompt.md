@@ -3,34 +3,41 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 9692. Top K Frequent Words.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1498. Number of Subsequences That Satisfy the Given Sum Condition.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 692. Top K Frequent Words.
+Instruction: Guide me through solving 1498. Number of Subsequences That Satisfy the Given Sum Condition.
 
-[Given an array of strings words and an integer k, return the k most frequent strings.
+[You are given an array of integers nums and an integer target.
 
-Return the answer sorted by the frequency from highest to lowest. Sort the words with the same frequency by their lexicographical order.
+Return the number of non-empty subsequences of nums such that the sum of the minimum and maximum element on it is less or equal to target. Since the answer may be too large, return it modulo 109 + 7.
 
 Example 1:
 
-Input: words = ["i","love","leetcode","i","love","coding"], k = 2
-Output: ["i","love"]
-Explanation: "i" and "love" are the two most frequent words.
-Note that "i" comes before "love" due to a lower alphabetical order.
+Input: nums = [3,5,6,7], target = 9
+Output: 4
+Explanation: There are 4 subsequences that satisfy the condition.
+[3] -> Min value + max value <= target (3 + 3 <= 9)
+[3,5] -> (3 + 5 <= 9)
+[3,5,6] -> (3 + 6 <= 9)
+[3,6] -> (3 + 6 <= 9)
 Example 2:
 
-Input: words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4
-Output: ["the","is","sunny","day"]
-Explanation: "the", "is", "sunny" and "day" are the four most frequent words, with the number of occurrence being 4, 3, 2 and 1 respectively.
+Input: nums = [3,3,6,8], target = 10
+Output: 6
+Explanation: There are 6 subsequences that satisfy the condition. (nums can have repeated numbers).
+[3] , [3] , [3,3], [3,6] , [3,6] , [3,3,6]
+Example 3:
+
+Input: nums = [2,3,3,4,6,7], target = 12
+Output: 61
+Explanation: There are 63 non-empty subsequences, two of them do not satisfy the condition ([6,7], [7]).
+Number of valid subsequences (63 - 2 = 61).
 
 Constraints:
 
-1 <= words.length <= 500
-1 <= words[i].length <= 10
-words[i] consists of lowercase English letters.
-k is in the range [1, The number of unique words[i]]
-
-Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= nums.length <= 105
+1 <= nums[i] <= 106
+1 <= target <= 106.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
