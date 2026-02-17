@@ -409,7 +409,7 @@ Similar to level-order traversal where each "level" is words of the same length.
 **Comparison:**
 
 | Approach                    | Time       | Space  | Readability | Best For       |
-| --------------------------- | ---------- | ------ | ----------- | -------------- |
+| --------------------------- | ---------- | ------ | ----------- | ---------------|
 | Bottom-Up DP (our solution) | O(n×L²)    | O(n×L) | ⭐⭐⭐⭐    | Interviews     |
 | Top-Down DFS                | O(n×L²×26) | O(n×L) | ⭐⭐⭐      | Complex graphs |
 | BFS                         | O(n×L²)    | O(n×L) | ⭐⭐        | Educational    |
