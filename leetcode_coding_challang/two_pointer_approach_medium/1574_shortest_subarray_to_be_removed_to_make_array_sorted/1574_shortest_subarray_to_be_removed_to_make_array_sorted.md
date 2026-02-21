@@ -1951,14 +1951,14 @@ result = 3  // "result is the LENGTH (count of elements)"
 
 ## 📊 Comparison Table
 
-| **Variable** | **Type** | **Contains** | **Example Value** |
-|--------------|----------|--------------|-------------------|
-| `arr` | Array | The input array | `[1,2,3,10,4,2,3,5]` |
-| `left` | Number | Index of last element in prefix | `2` |
-| `right` | Number | Index of first element in suffix | `5` |
-| `i` | Number | Pointer in prefix | `0, 1, 2` |
-| `j` | Number | Pointer in suffix | `5, 6` |
-| `result` | **Number** | **LENGTH of removal** | **3** |
+| **Variable** | **Type**   | **Contains**                     | **Example Value**    |
+|--------------|------------|----------------------------------|----------------------|
+| `arr`        | Array      | The input array                  | `[1,2,3,10,4,2,3,5]` |
+| `left`       | Number     | Index of last element in prefix  | `2`                  |
+| `right`      | Number     | Index of first element in suffix | `5`                  |
+| `i`          | Number     | Pointer in prefix                | `0, 1, 2`            |
+| `j`          | Number     | Pointer in suffix                | `5, 6`               |
+| `result`     | **Number** | **LENGTH of removal**            | **3**                |
 
 ---
 
@@ -2066,7 +2066,7 @@ n = 8  // array length
 
 If we start removing at index `i` and remove `len` elements:
 
-```
+```javascript
 Starting index: i
 Ending index:   i + len - 1  (inclusive)
 
@@ -2081,7 +2081,7 @@ i ≤ n - len  ✅
 
 ## 📊 Visual Example with Array Indices
 
-```
+```javascript
 Array: [1] [2] [3] [10] [4] [2] [3] [5]
 Index:  0   1   2   3    4   5   6   7
                                       ↑
@@ -2109,7 +2109,7 @@ Valid i values: 0, 1, 2, 3, 4, 5, 6, 7, 8
 
 **Trying i = 0:**
 
-```
+```javascript
 Remove: arr[0...0-1] = arr[0...-1] = nothing
 Remaining: [1,2,3,10,4,2,3,5] (all 8 elements)
 slice(0, 0) + slice(0) = [] + [1,2,3,10,4,2,3,5]
@@ -2118,7 +2118,7 @@ Is sorted? NO (10 > 4)
 
 **Trying i = 8:**
 
-```
+```javascript
 Remove: arr[8...7] = nothing
 Remaining: [1,2,3,10,4,2,3,5]
 slice(0, 8) + slice(8) = [1,2,3,10,4,2,3,5] + []
@@ -2143,7 +2143,7 @@ Let me show why `i <= 7` is the limit:
 
 **Trying i = 7 (last valid position):**
 
-```
+```javascript
 Remove: arr[7...7] = arr[7] = [5]
 Start: 7
 End: 7 + 1 - 1 = 7 ✅ (within bounds!)
@@ -2156,7 +2156,7 @@ Is sorted? NO
 
 **What if i = 8? (out of bounds!)**
 
-```
+```javascript
 Remove: arr[8...8] = undefined ❌
 Start: 8
 End: 8 + 1 - 1 = 8 (OUT OF BOUNDS!)
@@ -2206,7 +2206,7 @@ Let me trace some attempts:
 
 **Trying i = 0:**
 
-```
+```javascript
 Remove: arr[0...2] = [1,2,3]
 Remaining: [] + [10,4,2,3,5] = [10,4,2,3,5]
 Is sorted? NO (10 > 4)
@@ -2214,7 +2214,7 @@ Is sorted? NO (10 > 4)
 
 **Trying i = 1:**
 
-```
+```javascript
 Remove: arr[1...3] = [2,3,10]
 Remaining: [1] + [4,2,3,5] = [1,4,2,3,5]
 Is sorted? NO (4 > 2)
@@ -2222,7 +2222,7 @@ Is sorted? NO (4 > 2)
 
 **Trying i = 2:**
 
-```
+```javascript
 Remove: arr[2...4] = [3,10,4]
 Remaining: [1,2] + [2,3,5] = [1,2,2,3,5]
 Is sorted? YES! ✅
@@ -2252,7 +2252,7 @@ Return 3
 
 ### **When len = 3:**
 
-```
+```Javascript
 Array indices: 0 1 2 3 4 5 6 7
                ↓ ↓ ↓ ↓ ↓ ↓
 Valid starts:  ✅✅✅✅✅✅
@@ -2280,7 +2280,7 @@ for (let i = 0; i <= n - len; i++) {
 
 **Breaking down `i <= n - len`:**
 
-```
+```Javascript
 Subarray to remove: [i, i+1, i+2, ..., i+len-1]
 Last index removed: i + len - 1
 
@@ -2296,7 +2296,7 @@ i ≤ n - len  ✅ This is our condition!
 
 **Think of it like sliding a window:**
 
-```
+```javascript
 Window size = len
 Array size = n
 
@@ -2352,7 +2352,7 @@ for (let i = 0; i <= 5; i++) {  // ← Loop runs 6 times (i = 0,1,2,3,4,5)
 
 ---
 
-## ✨ Summary_
+## ✨ Summary__
 
 **The condition `i <= n - len` ensures:**
 
@@ -2363,17 +2363,600 @@ for (let i = 0; i <= 5; i++) {  // ← Loop runs 6 times (i = 0,1,2,3,4,5)
 
 **Formula:**
 
-```
+```javascript
 Maximum starting position = n - len
 Because: i + (len - 1) must be ≤ n - 1
 ```
 
 **Example with n=8, len=3:**
 
-```
+```javascript
 Max i = 8 - 3 = 5
 At i=5: remove arr[5,6,7] ✅ (last valid position)
 At i=6: remove arr[6,7,8] ❌ (index 8 doesn't exist!)
 ```
 
-Does this clarify the termination condition? 🎯
+---
+
+Excellent question! This is a **crucial** difference in array indexing. Let me break it down clearly.
+
+---
+
+## 🎯 The Core Difference
+
+### **Version 1: `i + len - 1` (Inclusive End)**
+
+```javascript
+Starting index: i
+Ending index: i + len - 1  // Last element INCLUDED
+```
+
+This represents **which elements we're removing** (inclusive range)
+
+### **Version 2: `i + len` (Exclusive End)**
+
+```javascript
+Starting index: i  
+Ending index: i + len  // First element NOT included
+```
+
+This represents **where to start keeping elements again** (exclusive boundary)
+
+---
+
+## 📊 Visual Comparison
+
+Let's say: **i = 2, len = 3**
+
+```Javascript
+Array: [1] [2] [3] [10] [4] [2] [3] [5]
+Index:  0   1   2   3    4   5   6   7
+```
+
+### **Using `i + len - 1 = 2 + 3 - 1 = 4`**
+
+```Javascript
+Starting index: 2
+Ending index: 4  (INCLUSIVE)
+
+Remove: arr[2], arr[3], arr[4]
+       [3]   [10]   [4]
+       ↓     ↓      ↓
+    These 3 elements
+
+Count: 3 elements ✅
+```
+
+### **Using `i + len = 2 + 3 = 5`**
+
+```Javascript
+Starting index: 2
+Ending index: 5  (EXCLUSIVE - NOT included!)
+
+Remove: arr[2], arr[3], arr[4]  (stop BEFORE arr[5])
+       [3]   [10]   [4]
+       ↓     ↓      ↓
+    These 3 elements
+
+Count: 3 elements ✅
+```
+
+**Both give the same result, but mean different things!**
+
+---
+
+## 🔍 Detailed Breakdown
+
+### **Scenario: Remove 3 elements starting at index 2**
+
+```javascript
+i = 2
+len = 3
+```
+
+| **Formula**   | **Value**         | **Meaning**                      | **Elements**                                         |
+|---------------|-------------------|----------------------------------|------------------------------------------------------|
+| `i + len - 1` | 2 + 3 - 1 = **4** | Last index to remove (inclusive) | Remove arr[2], arr[3], arr[4]                        |
+| `i + len`     | 2 + 3 = **5**     | First index to KEEP (exclusive)  | Remove arr[2], arr[3], arr[4], then keep from arr[5] |
+
+---
+
+## 💻 How This Appears in Code
+
+### **In the Brute Force Algorithm:**
+
+```javascript
+// Remove arr[i...i+len-1]
+let remaining = arr.slice(0, i).concat(arr.slice(i + len));
+                          ↑                        ↑
+                    Keep [0...i-1]           Keep [i+len...n-1]
+```
+
+Let's trace with **i = 2, len = 3**:
+
+```javascript
+arr.slice(0, 2)      // Keep indices [0, 1]
+                     // Result: [1, 2]
+
+arr.slice(2 + 3)     // Keep indices [5, 6, 7]
+arr.slice(5)         // Result: [2, 3, 5]
+
+remaining = [1, 2].concat([2, 3, 5])
+          = [1, 2, 2, 3, 5]
+
+// What did we remove?
+// Original: [1, 2, 3, 10, 4, 2, 3, 5]
+// Removed:      [3, 10, 4]  ← indices 2, 3, 4
+```
+
+---
+
+## 🎨 Visualization with Multiple Examples
+
+### **Example 1: i = 0, len = 2**
+
+```Javascript
+Array: [1] [2] [3] [10] [4] [2] [3] [5]
+Index:  0   1   2   3    4   5   6   7
+
+i + len - 1 = 0 + 2 - 1 = 1  (inclusive end)
+↓
+Remove indices: [0, 1]
+Remove values:  [1, 2]
+
+i + len = 0 + 2 = 2  (exclusive end, start keeping from here)
+↓
+Keep from index: 2 onwards
+Keep values: [3, 10, 4, 2, 3, 5]
+
+Result: [3, 10, 4, 2, 3, 5]
+```
+
+### **Example 2: i = 5, len = 3**
+
+```Javascript
+Array: [1] [2] [3] [10] [4] [2] [3] [5]
+Index:  0   1   2   3    4   5   6   7
+
+i + len - 1 = 5 + 3 - 1 = 7  (inclusive end)
+↓
+Remove indices: [5, 6, 7]
+Remove values:  [2, 3, 5]
+
+i + len = 5 + 3 = 8  (exclusive end, would be past array!)
+↓
+Keep from index: 8 onwards (nothing!)
+Keep values: []
+
+Result: [1, 2, 3, 10, 4]
+```
+
+---
+
+## 📐 Why We Use `i + len - 1` in Comments
+
+```javascript
+// Remove arr[i...i+len-1]
+```
+
+**This notation means:** "Remove from index i TO index i+len-1, INCLUSIVE"
+
+**In mathematical notation:** [i, i+len-1] with square brackets = inclusive
+
+**Examples:**
+
+- Remove arr[2...4] = remove arr[2], arr[3], arr[4]
+- Remove arr[0...1] = remove arr[0], arr[1]
+
+---
+
+## 🔢 Counting Elements: Why the `-1`?
+
+**To remove `len` elements starting at index `i`:**
+
+```Javascript
+Elements: arr[i], arr[i+1], arr[i+2], ..., arr[i+len-1]
+
+Count them:
+Position 1: arr[i]        ← start
+Position 2: arr[i+1]
+Position 3: arr[i+2]
+...
+Position len: arr[i+len-1] ← end
+
+Total positions: len ✅
+```
+
+**The last element is at index `i + len - 1` because:**
+
+- We start counting at position `i` (that's position 0 relative to start)
+- We need `len` elements total
+- So we go from `i` to `i + (len - 1)`
+
+---
+
+## 💡 Array.slice() Behavior
+
+JavaScript's `slice()` uses **exclusive end**:
+
+```javascript
+arr.slice(start, end)  // Elements from start to end-1 (end is EXCLUSIVE)
+```
+
+**Examples:**
+
+```javascript
+arr = [1, 2, 3, 10, 4, 2, 3, 5]
+
+arr.slice(2, 5)
+// Returns: [3, 10, 4]
+// Indices: [2, 3, 4]  (NOT including index 5)
+
+arr.slice(2, 2+3)  // Same as above
+// Returns: [3, 10, 4]
+
+// To skip elements [2, 3, 4], we do:
+arr.slice(0, 2).concat(arr.slice(5))
+// Keep [0,1], skip [2,3,4], keep [5,6,7]
+```
+
+---
+
+## 🎯 The Relationship
+
+```javascript
+// These represent the SAME removal:
+
+// Inclusive notation (what we remove):
+Remove: arr[i ... i+len-1]
+
+// Exclusive notation (what we keep):
+Keep: arr[0 ... i-1] + arr[i+len ... n-1]
+                           ↑
+                 Start keeping from here (exclusive boundary)
+```
+
+**Visual:**
+
+```Javascript
+Index:  0   1   2   3   4   5   6   7
+       [1] [2] [3][10] [4] [2] [3] [5]
+              ↑       ↑   ↑
+              i   i+len-1 i+len
+            start  (last)  (first to keep)
+            
+i = 2, len = 3:
+- Remove arr[2] through arr[4] (i+len-1 = 4)
+- Keep from arr[5] onwards (i+len = 5)
+```
+
+---
+
+## 📊 Comparison Table_
+
+| **Perspective**          | **Formula**   | **Value (i=2, len=3)** | **Meaning**                    |
+|--------------------------|---------------|------------------------|--------------------------------|
+| **Last removed index**   | `i + len - 1` | 4                      | "The last index we remove"     |
+| **First kept index**     | `i + len`     | 5                      | "Where we start keeping again" |
+| **Distance from start**  | `len`         | 3                      | "How many elements to remove"  |
+
+---
+
+## 🧮 Mathematical Proof They're Equivalent
+
+**Claim:** Removing arr[i ... i+len-1] removes exactly `len` elements.
+
+**Proof:**
+
+```Javascript
+Elements removed: arr[i], arr[i+1], ..., arr[i+len-1]
+
+Count = (last_index - first_index) + 1
+Count = (i+len-1 - i) + 1
+Count = len - 1 + 1
+Count = len ✅
+```
+
+**Claim:** slice(i+len) starts at the correct position.
+
+**Proof:**
+
+```Javascript
+Last removed: arr[i+len-1]
+Next element: arr[(i+len-1) + 1]
+            = arr[i+len] ✅ Correct!
+```
+
+---
+
+## ✨ Summary___
+
+| **Expression** | **Type**      | **Includes This Index?** | **Use Case**                        |
+|----------------|---------------|--------------------------|-------------------------------------|
+| `i + len - 1`  | Inclusive end | ✅ YES                   | "Last element to remove"            |
+| `i + len`      | Exclusive end | ❌ NO                    | "First element to keep" (for slice) |
+
+**Key Insight:**
+
+```Javascript
+arr[i + len - 1]  ← Last element removed (INCLUDED)
+arr[i + len]      ← First element kept (NOT included in removal)
+```
+
+**Both approaches remove the same elements:**
+
+- `i + len - 1` tells you the last index you're removing
+- `i + len` tells you where to resume keeping elements
+
+**In code:**
+
+```javascript
+// Remove arr[i ... i+len-1]
+arr.slice(0, i).concat(arr.slice(i + len))
+                                  ↑
+                    This is i+len (exclusive boundary for slice)
+```
+
+Does this clarify the difference? 🎯
+---Great question! This **is** confusing because it's a special edge case. Let me clarify what's happening when **i = 8** and **len = 0**.
+
+---
+
+## 🎯 The Confusion: arr[8...7]
+
+```javascript
+len = 0
+i = 8
+Remove: arr[8...7] = ???
+```
+
+**This looks backwards!** Start index (8) is GREATER than end index (7)?
+
+**Answer:** Yes! This represents an **EMPTY range** (removing 0 elements).
+
+---
+
+## 📐 Understanding len = 0 (Remove Nothing)
+
+When `len = 0`, we're testing: "What if we don't remove anything at all?"
+
+### **The Formula:**
+
+```javascript
+Starting index: i
+Ending index: i + len - 1 = i + 0 - 1 = i - 1
+
+When i = 8:
+Ending index = 8 - 1 = 7
+```
+
+**Range: arr[8...7]**
+
+- Start: 8
+- End: 7
+- Since 8 > 7, this is an **empty range** ✅
+
+---
+
+## 💻 What The Code Actually Does
+
+```javascript
+i = 8, len = 0
+
+// Remove arr[8...7] (which is nothing)
+let remaining = arr.slice(0, 8).concat(arr.slice(8));
+```
+
+### **Breaking it down:**
+
+```javascript
+arr = [1,2,3,10,4,2,3,5]
+Index: 0 1 2  3 4 5 6 7
+
+arr.slice(0, 8)
+// Get elements from index 0 to 7 (8 is exclusive)
+// Returns: [1,2,3,10,4,2,3,5] ✅ All elements
+
+arr.slice(8)
+// Get elements from index 8 onwards
+// Index 8 doesn't exist (max is 7)
+// Returns: [] ✅ Empty array
+
+remaining = [1,2,3,10,4,2,3,5] + []
+          = [1,2,3,10,4,2,3,5]
+```
+
+**Result:** The original array, unchanged! (Because we removed 0 elements)
+
+---
+
+## 🎨 Visual Representation__
+
+```Javascript
+Array: [1] [2] [3] [10] [4] [2] [3] [5]
+Index:  0   1   2   3   4   5   6   7
+                                      ↑
+                                    Last valid index
+
+When i = 8, len = 0:
+
+slice(0, 8):
+[1] [2] [3] [10] [4] [2] [3] [5]  ← Take all elements (0 through 7)
+ ↑                             ↑
+ 0                             7
+
+slice(8):
+                                    [?] ← Start here (doesn't exist)
+                                     8
+Result: [] (empty)
+
+Combine: [1,2,3,10,4,2,3,5] + [] = [1,2,3,10,4,2,3,5]
+```
+
+---
+
+## 🔍 Why Does i = 8 Even Exist?
+
+**The loop condition:**
+
+```javascript
+for (let i = 0; i <= n - len; i++)
+
+When len = 0:
+i <= 8 - 0
+i <= 8
+```
+
+So `i` goes: 0, 1, 2, 3, 4, 5, 6, 7, **8**
+
+### **Why allow i = 8?**
+
+Mathematically, when removing 0 elements, **every starting position** gives the same result:
+
+```javascript
+i = 0: Remove arr[0...-1] = nothing → [1,2,3,10,4,2,3,5]
+i = 1: Remove arr[1...0]  = nothing → [1,2,3,10,4,2,3,5]
+i = 2: Remove arr[2...1]  = nothing → [1,2,3,10,4,2,3,5]
+...
+i = 8: Remove arr[8...7]  = nothing → [1,2,3,10,4,2,3,5]
+```
+
+**All produce the same result!** It's redundant, but harmless.
+
+---
+
+## 📊 All Cases When len = 0
+
+| **i** | **Remove Range** | **slice(0, i)**      | **slice(i)**        | **Result**     |
+|-------|------------------|----------------------|---------------------|----------------|
+| 0     | arr[0...-1]      | `[]`                 | `[1,2,3,10,4,2,3,5]`| Original array |
+| 1     | arr[1...0]       | `[1]`                | `[2,3,10,4,2,3,5]`  | Original array |
+| 2     | arr[2...1]       | `[1,2]`              | `[3,10,4,2,3,5]`    | Original array |
+| 7     | arr[7...6]       | `[1,2,3,10,4,2,3]`   | `[5]`               | Original array |
+| 8     | arr[8...7]       | `[1,2,3,10,4,2,3,5]` | `[]`                | Original array |
+
+**All give the same result because we're removing nothing!**
+
+---
+
+## 🧮 Mathematical Interpretation
+
+**An Empty Range:**
+
+In mathematics, when start > end, the range is empty:
+
+```Javascript
+[8, 7] = ∅ (empty set)
+[5, 4] = ∅ (empty set)
+[2, 1] = ∅ (empty set)
+```
+
+**In array terms:**
+
+```javascript
+Remove arr[8...7] means:
+"Remove elements from index 8 to index 7"
+
+But 8 > 7, so there are NO elements in this range!
+Result: Remove nothing ✅
+```
+
+---
+
+## 💡 Why This Isn't Actually a Problem
+
+The code works correctly because:
+
+1. **slice(0, 8)** safely returns all elements (JavaScript doesn't error on index 8)
+2. **slice(8)** safely returns an empty array (past the end is just empty)
+3. **Concatenating** them gives the original array
+4. **isSorted()** checks if it's sorted (it's not)
+5. **Continue** to the next len value
+
+---
+
+## ✅ Clearer Way to Think About It
+
+**When len = 0:**
+
+```javascript
+"We're testing if the array is already sorted"
+// Because removing 0 elements = keeping everything
+
+for (let i = 0; i <= 8; i++) {
+    // All i values give the same result
+    remaining = [1,2,3,10,4,2,3,5]
+    isSorted(remaining)  // false
+}
+// Move on to len = 1
+```
+
+**The different `i` values don't matter** when len = 0, because we're always testing the full array!
+
+---
+
+## 🎯 Corrected Understanding
+
+When I wrote:
+
+```Javascript
+Remove: arr[8...7] = nothing
+```
+
+**Better explanation:**
+
+```Javascript
+When len = 0 and i = 8:
+- We want to remove 0 elements starting at position 8
+- The "ending index" formula gives: 8 + 0 - 1 = 7
+- Since start (8) > end (7), the range is EMPTY
+- slice(0, 8) = entire array
+- slice(8) = empty array  
+- Result: Original array (no removal)
+```
+
+---
+
+## 🔑 Key Takeaway__
+
+**The range arr[8...7] is mathematically valid notation for "empty range"**
+
+Think of it like:
+
+```Javascript
+Remove elements from position 8 to position 7
+But position 8 comes AFTER position 7
+So there's nothing between them
+Result: Remove nothing ✅
+```
+
+**Real-world analogy:**
+
+- "Read pages 100 to 99 of the book"
+- That's impossible! Page 100 comes after 99
+- So you read nothing (0 pages)
+
+---
+
+## ✨ Summary____
+
+**Why arr[8...7] = nothing:**
+
+- Formula: arr[i ... i+len-1] = arr[8 ... 8+0-1] = arr[8 ... 7]
+- Since 8 > 7, this is an **empty range**
+- Removing an empty range = removing nothing
+- Result: Original array unchanged
+
+**Why i = 8 is allowed:**
+
+- Loop condition: `i <= n - len` = `i <= 8 - 0` = `i <= 8`
+- When len = 0, all values of i give the same result
+- It's redundant but doesn't cause errors
+
+**What actually happens:**
+
+```javascript
+slice(0, 8) returns [1,2,3,10,4,2,3,5]  // All 8 elements
+slice(8) returns []                      // Nothing (past the end)
+Result: [1,2,3,10,4,2,3,5]              // Original array
+```

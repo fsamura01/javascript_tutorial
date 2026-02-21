@@ -3,37 +3,39 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1574. Shortest Subarray to be Removed to Make Array Sorted.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 1574. Shortest Subarray to be Removed to Make Array Sorted.
+Instruction: Guide me through solving 1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers.
 
-[Given an integer array arr, remove a subarray (can be empty) from arr such that the remaining elements in arr are non-decreasing.
+[Given two arrays of integers nums1 and nums2, return the number of triplets formed (type 1 and type 2) under the following rules:
 
-Return the length of the shortest subarray to remove.
-
-A subarray is a contiguous subsequence of the array.
+Type 1: Triplet (i, j, k) if nums1[i]2 == nums2[j] *nums2[k] where 0 <= i < nums1.length and 0 <= j < k < nums2.length.
+Type 2: Triplet (i, j, k) if nums2[i]2 == nums1[j]* nums1[k] where 0 <= i < nums2.length and 0 <= j < k < nums1.length.
 
 Example 1:
 
-Input: arr = [1,2,3,10,4,2,3,5]
-Output: 3
-Explanation: The shortest subarray we can remove is [10,4,2] of length 3. The remaining elements after that will be [1,2,3,3,5] which are sorted.
-Another correct solution is to remove the subarray [3,10,4].
+Input: nums1 = [7,4], nums2 = [5,2,8,9]
+Output: 1
+Explanation: Type 1: (1, 1, 2), nums1[1]2 = nums2[1] *nums2[2]. (42 = 2* 8).
 Example 2:
 
-Input: arr = [5,4,3,2,1]
-Output: 4
-Explanation: Since the array is strictly decreasing, we can only keep a single element. Therefore we need to remove a subarray of length 4, either [5,4,3,2] or [4,3,2,1].
+Input: nums1 = [1,1], nums2 = [1,1,1]
+Output: 9
+Explanation: All Triplets are valid, because 12 = 1 *1.
+Type 1: (0,0,1), (0,0,2), (0,1,2), (1,0,1), (1,0,2), (1,1,2).  nums1[i]2 = nums2[j]* nums2[k].
+Type 2: (0,0,1), (1,0,1), (2,0,1). nums2[i]2 = nums1[j] * nums1[k].
 Example 3:
 
-Input: arr = [1,2,3]
-Output: 0
-Explanation: The array is already non-decreasing. We do not need to remove any elements.
+Input: nums1 = [7,7,8,3], nums2 = [1,2,9,7]
+Output: 2
+Explanation: There are 2 valid triplets.
+Type 1: (3,0,2).  nums1[3]2 = nums2[0] *nums2[2].
+Type 2: (3,0,1).  nums2[3]2 = nums1[0]* nums1[1].
 
 Constraints:
 
-1 <= arr.length <= 105
-0 <= arr[i] <= 109.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+1 <= nums1.length, nums2.length <= 1000
+1 <= nums1[i], nums2[i] <= 105.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
