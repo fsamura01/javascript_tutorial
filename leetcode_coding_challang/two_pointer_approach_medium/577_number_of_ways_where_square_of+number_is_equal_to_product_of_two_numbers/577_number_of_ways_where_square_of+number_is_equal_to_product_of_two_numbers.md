@@ -568,7 +568,7 @@ Label the three 4s as `4a`, `4b`, `4c` so we can tell them apart by their index.
 
 List every possible pair:
 
-```
+```Javascript
 (4a, 4b)  ✅
 (4a, 4c)  ✅
 (4b, 4c)  ✅
@@ -588,7 +588,7 @@ There are **3 valid pairs**, not 6. We only want **unordered pairs** because the
 
 If order DID matter (treating `(4a, 4b)` and `(4b, 4a)` as different), the count would be:
 
-```
+```Javascript
 First pick:  3 choices
 Second pick: 2 remaining choices (can't pick the same index twice)
 
@@ -601,7 +601,7 @@ In general: `freq × (freq - 1)`
 
 `(4a, 4b)` and `(4b, 4a)` both refer to the same pair of indices. So we divide by 2:
 
-```
+```Javascript
 Unordered pairs = (3 × 2) / 2 = 3
 ```
 
@@ -626,7 +626,7 @@ You can verify each row by hand — it always checks out.
 
 When the two values are **different**, say `x = 2` and `complement = 8`, there's no risk of picking the same index twice because the two numbers come from **separate groups** in the frequency map. Every `2` can pair with every `8` independently:
 
-```
+```Javascript
 freq[2] = 3,  freq[8] = 2
 
 Valid pairs:

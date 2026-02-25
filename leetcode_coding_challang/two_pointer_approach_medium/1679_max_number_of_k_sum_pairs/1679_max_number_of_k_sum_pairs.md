@@ -1,8 +1,8 @@
-================================================================
-  CODING INTERVIEW STUDY NOTES
-  LeetCode #1679 — Max Number of K-Sum Pairs
+
+# CODING INTERVIEW STUDY NOTES
+
+  LeetCode 1679 — Max Number of K-Sum Pairs
   Pattern: Two Pointers | Difficulty: Medium
-================================================================
 
 ----------------------------------------------------------------
 
@@ -120,6 +120,7 @@ Result: count = 1 ✅ (matches expected output)
 
 ----------------------------------------------------------------
 
+```Javascript
 var maxOperations = function(nums, k) {
   // Step 1: Sort the array
   nums.sort((a, b) => a - b);
@@ -144,7 +145,9 @@ var maxOperations = function(nums, k) {
 
   return count;
 };
+```
 
+```Javascript
 NOTE: Flipping the else-if condition also works!
   } else if (sum < k) {
       left++;
@@ -152,6 +155,7 @@ NOTE: Flipping the else-if condition also works!
       right--;
   }
 Both versions are logically correct.
+```
 
 ----------------------------------------------------------------
 
@@ -159,6 +163,7 @@ Both versions are logically correct.
 
 ----------------------------------------------------------------
 
+```Javascript
   Time:  O(n log n)
          - Sorting     → O(n log n)
          - Two pointers → O(n)
@@ -176,6 +181,7 @@ Why O(n log n) + O(n) = O(n log n)?
 
 Big O Growth Order (slowest → fastest growing):
   O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(2^n)
+```
 
 ----------------------------------------------------------------
 
@@ -183,10 +189,12 @@ Big O Growth Order (slowest → fastest growing):
 
 ----------------------------------------------------------------
 
+```Javascript
 - No valid pairs       → count stays 0, loop ends naturally
 - All same elements    → works fine (e.g. [2,2,2,2], k=4 → 2 pairs)
 - Only 2 elements      → one check, pointers meet, loop ends
 - k < two smallest     → no pairs found, count = 0
+```
 
 ----------------------------------------------------------------
 
@@ -198,5 +206,3 @@ Big O Growth Order (slowest → fastest growing):
 - Two pointers avoids the O(n^2) brute force
 - Too big = shrink right, too small = grow left
 - You can flip the conditions as long as all cases are covered
-
-================================================================
