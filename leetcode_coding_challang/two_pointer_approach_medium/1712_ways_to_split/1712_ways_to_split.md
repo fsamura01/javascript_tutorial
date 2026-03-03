@@ -492,20 +492,20 @@ function waysToSplit(nums) {
 
 PATTERNS USED:
 
-- Prefix Sum   → fast subarray sum computation O(1)
-- Binary Search → fast range boundary finding O(log n)
+>- Prefix Sum   → fast subarray sum computation O(1)
+>- Binary Search → fast range boundary finding O(log n)
 
 KEY INSIGHT:
-  For each fixed i, instead of scanning every possible j → O(n),
-  we binary search for min and max valid j boundaries because
-  the prefix sum array is SORTED → O(log n) per i!
+> For each fixed i, instead of scanning every possible j → O(n),
+> we binary search for min and max valid j boundaries because
+> the prefix sum array is SORTED → O(log n) per i!
 
 NEW CONCEPTS LEARNED:
 
-- Prefix sum array and how to build it
-- Lower bound binary search (find smallest valid index)
-- Upper bound binary search (find largest valid index)
-- How sorted property enables binary search optimization
+>- Prefix sum array and how to build it
+>- Lower bound binary search (find smallest valid index)
+>- Upper bound binary search (find largest valid index)
+>- How sorted property enables binary search optimization
 
 FUTURE APPLICATIONS — look for prefix sum + binary search when:
 
@@ -524,5 +524,3 @@ COMMON MISTAKES TO AVOID:
 - Storing value instead of INDEX in binary search result
 - Mixing variable name cases (min_J vs min_j)
 - Missing let/const declarations
-
-================================================================
