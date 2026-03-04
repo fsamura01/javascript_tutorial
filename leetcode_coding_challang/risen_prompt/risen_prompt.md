@@ -3,65 +3,56 @@
 Certainly! Using the RISEN framework (Role, Instruction, Steps, End goal, Narrowing),
 here’s a structured prompt to help you effectively use ChatGPT for solving LeetCode problems and learning problem-solving patterns:
 
-**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers.
+**Role** You are an AI tutor specializing in competitive programming and algorithm design. I'm struggling to understand Leetcode problem 1721. Swapping Nodes in a Linked List.
 Can you help me learn it by using first-principles thinking?
-Instruction: Guide me through solving 1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers.
+Instruction: Guide me through solving 1721. Swapping Nodes in a Linked List.
 
-[Given two arrays of integers nums1 and nums2, return the number of triplets formed (type 1 and type 2) under the following rules:
+[You are given the head of a linked list, and an integer k.
 
-Type 1: Triplet (i, j, k) if nums1[i]2 == nums2[j] *nums2[k] where 0 <= i < nums1.length and 0 <= j < k < nums2.length.
-Type 2: Triplet (i, j, k) if nums2[i]2 == nums1[j]* nums1[k] where 0 <= i < nums2.length and 0 <= j < k < nums1.length.
+Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).
 
 Example 1:
 
-Input: nums1 = [7,4], nums2 = [5,2,8,9]
-Output: 1
-Explanation: Type 1: (1, 1, 2), nums1[1]2 = nums2[1] *nums2[2]. (42 = 2* 8).
+Input: head = [1,2,3,4,5], k = 2
+Output: [1,4,3,2,5]
 Example 2:
 
-Input: nums1 = [1,1], nums2 = [1,1,1]
-Output: 9
-Explanation: All Triplets are valid, because 12 = 1 *1.
-Type 1: (0,0,1), (0,0,2), (0,1,2), (1,0,1), (1,0,2), (1,1,2).  nums1[i]2 = nums2[j]* nums2[k].
-Type 2: (0,0,1), (1,0,1), (2,0,1). nums2[i]2 = nums1[j] * nums1[k].
-Example 3:
-
-Input: nums1 = [7,7,8,3], nums2 = [1,2,9,7]
-Output: 2
-Explanation: There are 2 valid triplets.
-Type 1: (3,0,2).  nums1[3]2 = nums2[0] *nums2[2].
-Type 2: (3,0,1).  nums2[3]2 = nums1[0]* nums1[1].
+Input: head = [7,9,6,6,7,8,3,0,9,5], k = 5
+Output: [7,9,6,6,8,7,3,0,9,5]
 
 Constraints:
 
-1 <= nums1.length, nums2.length <= 1000
-1 <= nums1[i], nums2[i] <= 105.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
+The number of nodes in the list is n.
+1 <= k <= n <= 105
+0 <= Node.val <= 100.] LeetCode problem while emphasizing the underlying problem-solving patterns and strategies.
 
 **Steps:**
 
 1. **Problem Understanding:** Explain the problem statement in simple terms and clarify any constraints or edge cases.
 
-2. **Technical Explanation:** How can I explain the problem using technical terms?
+2. **Key Insight:** What key the key insight?
 
-3. **Constraints Of The Problem** Help me understanding what the constraints tell us about the problem structure
+3. **Hight Level Understanding:** Understanding the problem in high-level
 
-4. **Highlight keyword:** Highlight keywords to help me solve similar problems in the future.
+4. **Constraints Of The Problem** Help me understanding what the constraints tell us about the problem structure
 
-5.  **Break Down The Problem Into Manageable Parts** Break the problem into smaller, manageable parts.
+5. **Highlight keyword:** Highlight keywords to help me solve similar problems in the future.
 
-6. **Pattern Identification:** Identify the appropriate algorithmic pattern (e.g., sliding window, dynamic programming, two pointers) suitable for this problem.
+6.  **Break Down The Problem Into Manageable Parts** Break the problem into smaller, manageable parts.
 
-7. **Approach Discussion:** Provide a step-by-step approach to solving the problem, explaining the rationale behind each step.
+7. **Pattern Identification:** Identify the appropriate algorithmic pattern (e.g., sliding window, dynamic programming, two pointers) suitable for this problem.
 
-8. **Code Implementation:** Write the code for the solution in both Javascript and Java, commenting on key sections to enhance understanding.
+8. **Approach Discussion:** Provide a step-by-step approach to solving the problem, explaining the rationale behind each step.
 
-9. **Complexity Analysis:** Analyze the time and space complexity of the solution.
+9. **Code Implementation:** Write the code for the solution in both Javascript and Java, commenting on key sections to enhance understanding.
 
-10. **Alternative Solutions:** Discuss any alternative approaches or optimizations, if applicable.
+10. **Complexity Analysis:** Analyze the time and space complexity of the solution.
 
-11. **Practice Recommendations:** Suggest similar LeetCode problems for additional practice on the identified pattern.
+11. **Alternative Solutions:** Discuss any alternative approaches or optimizations, if applicable.
 
-12. **Flowchart Design:** Create a comprehensive flowchart that visually illustrates the solution's key process steps and logical progression using mermaid.
+12. **Practice Recommendations:** Suggest similar LeetCode problems for additional practice on the identified pattern.
+
+13. **Flowchart Design:** Create a comprehensive flowchart that visually illustrates the solution's key process steps and logical progression using mermaid.
 
 **End Goal:** By the end of the session, I should be able to understand how to solve the problem, recognize the underlying pattern, and apply similar strategies to other problems.
 
